@@ -25,6 +25,11 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework:spring-web:6.1.13")
+	implementation("org.springframework.boot:spring-boot-devtools:3.3.4")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.4")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.3.4")
+	implementation("org.flywaydb:flyway-core:10.19.0")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
