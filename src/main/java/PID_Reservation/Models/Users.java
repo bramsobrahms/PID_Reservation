@@ -29,7 +29,7 @@ public class Users {
     public Users() {    }
 
     // Constructor with params
-    public Users(int id, String login, String password, String firstName, String lastName, String email, String language) {
+    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -40,7 +40,7 @@ public class Users {
     }
 
     // Constructor without password
-    public Users(int id, String login, String firstName, String lastName, String email, String language) {
+    public Users(Long id, String login, String firstName, String lastName, String email, String language) {
         this.id = id;
         this.login = login;
         this.firstName = firstName;

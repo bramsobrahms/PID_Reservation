@@ -19,7 +19,8 @@ public class Types {
     public Types() {}
 
     // constructor with param
-    public Types(String type) {
+    public Types(Long id, String type) {
+        this.id = id;
         this.type = type;
     }
 
