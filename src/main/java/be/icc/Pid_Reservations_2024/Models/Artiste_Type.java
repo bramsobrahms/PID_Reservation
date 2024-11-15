@@ -22,4 +22,13 @@ public class Artiste_Type {
     // Constructor by default
     protected Artiste_Type() {}
 
+    // Relation Many To One
+    @ManyToOne
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
+    private Artists artist;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id", referencedColumnName = "id")
+    private Types type;
+
 }
