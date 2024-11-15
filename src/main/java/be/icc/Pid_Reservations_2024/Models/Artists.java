@@ -1,4 +1,4 @@
-package be.icc.Pid_Reservations_2024;
+package be.icc.Pid_Reservations_2024.Models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
