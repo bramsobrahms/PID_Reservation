@@ -19,4 +19,7 @@ public class Reservations {
     @Column(name = "status", length = 60)
     private String status;
 
+    // Constructor by default
+    protected Reservations() { }
+
 }
