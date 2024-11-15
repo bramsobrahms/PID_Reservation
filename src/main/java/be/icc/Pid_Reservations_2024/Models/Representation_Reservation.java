@@ -13,8 +13,8 @@ public class Representation_Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "quantity", length = 4)
-    private int quantity;
+    @Column(name = "quantity", length = 4, columnDefinition = "TINYINT")
+    private Short quantity;
 
     // Constructor by default
     protected Representation_Reservation() {}
