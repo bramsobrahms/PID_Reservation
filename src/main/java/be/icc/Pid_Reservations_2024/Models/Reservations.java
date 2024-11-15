@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -18,6 +19,10 @@ public class Reservations {
     private LocalDateTime bookingDate;
     @Column(name = "status", length = 60)
     private String status;
+
+    // Relation One To Many
+    @OneToMany(mappedBy = "reservation")
+    private Set<Representation_Reservation> representation_reservations;
 
     // Constructor by default
     protected Reservations() { }

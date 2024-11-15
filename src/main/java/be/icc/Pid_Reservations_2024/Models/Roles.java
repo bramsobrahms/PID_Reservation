@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Getter @Setter
 @Table(name = "Roles")
@@ -14,6 +16,10 @@ public class Roles {
     private Long id;
     @Column(name = "role", length = 30)
     private String role;
+
+    // Relation One To Many
+    @OneToMany(mappedBy = "roles")
+    private Set<Role_User> role_user;
 
     // Constructor by default
     protected Roles() { }
