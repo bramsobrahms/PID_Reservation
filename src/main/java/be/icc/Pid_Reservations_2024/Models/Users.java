@@ -26,16 +26,12 @@ public class Users {
     private String email;
     @Column(name = "language", length = 2)
     private String language;
-    @Column(name = "role")
-    private String role;
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
 
     // Constructor by default
     protected Users() {}
 
     // Constructor with params
-    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language, String role, LocalDateTime createdAt) {
+    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -43,20 +39,16 @@ public class Users {
         this.lastName = lastName;
         this.email = email;
         this.language = language;
-        this.role = role;
-        this.createdAt = createdAt;
     }
 
     // Constructor without password
-    public Users(Long id, String login, String firstName, String lastName, String email, String language, String role, LocalDateTime createdAt) {
+    public Users(Long id, String login, String firstName, String lastName, String email, String language) {
         this.id = id;
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.language = language;
-        this.role = role;
-        this.createdAt = createdAt;
     }
 
     // toString with some params
@@ -68,8 +60,6 @@ public class Users {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", language='" + language + '\'' +
-                ", role='" + role + '\'' +
-                ", created at='" + createdAt + '\'' +
                 '}';
     }
 
