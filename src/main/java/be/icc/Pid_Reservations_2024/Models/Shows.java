@@ -20,11 +20,11 @@ public class Shows {
     private String title;
     @Column(name = "poster_url")
     private String posterUrl;
-    @Column(name = "duration", length = 5)
-    private Short duration;
+    @Column(name = "duration", length = 5, columnDefinition = "SMALLINT UNSIGNED")
+    private Integer duration;
     @Column(name = "created_in")
     private Date created_in;
-    @Column(name = "bookable", length = 1)
+    @Column(name = "bookable", columnDefinition = "TINYINT")
     private Boolean bookable;
 
     // Constructor by default
