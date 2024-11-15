@@ -14,6 +14,6 @@ public class Artiste_Type {
     private Long id;
 
     // Constructor by default
-    public Artiste_Type() {}
+    protected Artiste_Type() {}
 
 }
