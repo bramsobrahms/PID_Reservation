@@ -24,6 +24,11 @@ public class Reservations {
     @OneToMany(mappedBy = "reservation")
     private Set<Representation_Reservation> representation_reservations;
 
+    // Relation Many To One
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Users users;
+
     // Constructor by default
     protected Reservations() { }
 
