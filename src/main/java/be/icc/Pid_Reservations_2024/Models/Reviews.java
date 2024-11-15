@@ -16,8 +16,8 @@ public class Reviews {
     private Long id;
     @Column(name = "review", columnDefinition = "TEXT")
     private String review;
-    @Column(name = "stars")
-    private Byte stars;
+    @Column(name = "stars", columnDefinition = "TINYINT UNSIGNED")
+    private Short stars;
     @Column(name = "validated")
     private Boolean validated;
     @Column(name = "create_at")
