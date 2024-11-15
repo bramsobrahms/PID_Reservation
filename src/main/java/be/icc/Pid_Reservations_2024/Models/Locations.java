@@ -32,6 +32,10 @@ public class Locations {
     @OneToMany(mappedBy = "locations")
     private Set<Shows> shows;
 
+    // Relation Many To One
+    @ManyToOne
+    @JoinColumn(name = "locality", referencedColumnName = "id")
+    private Localities locality;
 
     // Constructor by default
     protected Locations() {}
