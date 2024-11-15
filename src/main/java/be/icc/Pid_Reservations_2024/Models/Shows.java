@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -26,6 +27,16 @@ public class Shows {
     private Date created_in;
     @Column(name = "bookable", columnDefinition = "TINYINT")
     private Boolean bookable;
+
+    // Relation One to Many
+    @OneToMany(mappedBy = "show")
+    private Set<Artiste_Type_Show> artiste_type_show;
+
+    @OneToMany(mappedBy = "show")
+    private Set<Representations> representations;
+
+    @OneToMany(mappedBy = "show")
+    private Set<Reviews> reviews;
 
     // Constructor by default
     public Shows() {}
