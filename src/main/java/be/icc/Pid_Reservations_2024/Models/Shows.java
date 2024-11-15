@@ -38,6 +38,11 @@ public class Shows {
     @OneToMany(mappedBy = "show")
     private Set<Reviews> reviews;
 
+    // Relation Many To One
+    @ManyToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Locations locations;
+
     // Constructor by default
     public Shows() {}
 }
