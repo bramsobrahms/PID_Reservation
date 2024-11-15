@@ -16,7 +16,7 @@ public class Roles {
     private String role;
 
     // Constructor by default
-    public Roles() { }
+    protected Roles() { }
 
     //Constructor with params
     public Roles(Long id, String role) {
