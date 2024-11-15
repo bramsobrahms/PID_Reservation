@@ -13,6 +13,15 @@ public class Artiste_Type_Show {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Relation Many to One
+    @ManyToOne
+    @JoinColumn(name = "artist_type_id", referencedColumnName = "id")
+    private Artiste_Type artist_type;
+
+    @ManyToOne
+    @JoinColumn(name = "show_id", referencedColumnName = "id")
+    private Shows shows;
+
     // Constructor by default
     protected Artiste_Type_Show() {}
 
