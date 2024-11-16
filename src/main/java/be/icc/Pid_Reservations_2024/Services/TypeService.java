@@ -20,4 +20,20 @@ public class TypeService {
         return types;
     }
 
+    public Types getType(long id){
+        return typeRepository.findById(id);
+    }
+
+    public void createType(Types type){
+        typeRepository.save(type);
+    }
+
+    public void updateType(long id, Types type){
+        typeRepository.save(type);
+    }
+
+    public void deleteType(long id) {
+        typeRepository.deleteById(id);
+    }
+
 }
