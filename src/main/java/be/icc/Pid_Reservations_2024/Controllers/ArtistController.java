@@ -22,6 +22,6 @@ public class ArtistController {
         model.addAttribute("artists", artists);
         model.addAttribute("title", "List of artists");
 
-        return "artist/index";
+        return "Artist/index";
     }
 }
