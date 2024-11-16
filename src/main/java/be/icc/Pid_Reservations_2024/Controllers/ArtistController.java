@@ -75,6 +75,7 @@ public class ArtistController {
 
         return "Artist/edit";
     }
+
     @PutMapping("/artist/{id}/edit")
     public String update(@Valid @ModelAttribute("artist") Artists artist, BindingResult bindingResult, @PathVariable("id") long id,Model model) {
         if(bindingResult.hasErrors()) {
@@ -89,6 +90,17 @@ public class ArtistController {
         artistService.updateArtist(id, artist);
 
         return "redirect:/artist/"+artist.getId();
+    }
+
+    @DeleteMapping("/artist/{id}")
+    public String delete(@PathVariable("id") long id, Model model) {
+        Artists artistExisting = artistService.getArtist(id);
+
+        if(artistExisting != null) {
+            artistService.deleteArtist(id);
+        }
+
+        return "redirect:/artists";
     }
 
 }
