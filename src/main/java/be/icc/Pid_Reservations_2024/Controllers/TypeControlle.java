@@ -93,4 +93,15 @@ public class TypeControlle {
         return "redirect:/type/"+type.getId();
     }
 
+    @DeleteMapping("/type/{id}")
+    public String delete(@PathVariable("id") long id, Model model) {
+        Types type = typeService.getType(id);
+
+        if(type != null) {
+            typeService.deleteType(id);
+        }
+
+        return "redirect:/types";
+    }
+
 }
