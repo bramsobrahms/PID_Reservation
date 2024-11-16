@@ -24,4 +24,8 @@ public class TypeService {
         return typeRepository.findById(id);
     }
 
+    public void createType(Types type){
+        typeRepository.save(type);
+    }
+
 }
