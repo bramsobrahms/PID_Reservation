@@ -2,15 +2,13 @@ package be.icc.Pid_Reservations_2024.Controllers;
 
 import be.icc.Pid_Reservations_2024.Models.Types;
 import be.icc.Pid_Reservations_2024.Services.TypeService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -56,6 +54,41 @@ public class TypeControlle {
         }
 
         typeService.createType(type);
+
+        return "redirect:/type/"+type.getId();
+    }
+
+    @GetMapping("/type/{id}/edit")
+    public String edit(Model model, @PathVariable("id") long id, HttpServletRequest httpServletRequest) {
+        Types type = typeService.getType(id);
+
+        model.addAttribute("onetype", type);
+
+        // Generate the return link for cancel
+        String referrer = httpServletRequest.getHeader("Referer");
+
+        if(referrer != null && !referrer.equals("")) {
+            model.addAttribute("back", referrer);
+        }else {
+            model.addAttribute("back", "type/"+type.getId());
+        }
+
+        return "Type/edit";
+    }
+
+    @PutMapping("/type/{id}/edit")
+    public String update(@Valid @ModelAttribute("onetype") Types type, BindingResult bindingResult, @PathVariable("id") long id, Model model) {
+        if(bindingResult.hasErrors()) {
+            return "Type/edit";
+        }
+
+        Types typeExisting = typeService.getType(id);
+
+        if(typeExisting == null) {
+            return "Type/index";
+        }
+
+        typeService.updateType(id, type);
 
         return "redirect:/type/"+type.getId();
     }
