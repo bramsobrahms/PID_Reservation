@@ -32,4 +32,8 @@ public class TypeService {
         typeRepository.save(type);
     }
 
+    public void deleteType(long id) {
+        typeRepository.deleteById(id);
+    }
+
 }
