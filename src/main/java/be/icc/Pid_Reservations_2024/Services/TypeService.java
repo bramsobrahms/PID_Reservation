@@ -20,4 +20,8 @@ public class TypeService {
         return types;
     }
 
+    public Types getType(long id){
+        return typeRepository.findById(id);
+    }
+
 }
