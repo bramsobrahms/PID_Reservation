@@ -28,4 +28,8 @@ public class TypeService {
         typeRepository.save(type);
     }
 
+    public void updateType(long id, Types type){
+        typeRepository.save(type);
+    }
+
 }
