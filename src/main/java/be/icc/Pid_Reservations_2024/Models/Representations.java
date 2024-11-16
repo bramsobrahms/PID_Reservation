@@ -25,7 +25,7 @@ public class Representations {
     // Relation Many to One
     @ManyToOne
     @JoinColumn(name = "show_id", referencedColumnName = "id")
-    private Shows show;
+    private Shows shows;
 
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id")

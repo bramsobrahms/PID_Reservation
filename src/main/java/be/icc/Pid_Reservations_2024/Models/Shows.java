@@ -29,13 +29,13 @@ public class Shows {
     private Boolean bookable;
 
     // Relation One to Many
-    @OneToMany(mappedBy = "show")
+    @OneToMany(mappedBy = "shows")
     private Set<Artiste_Type_Show> artiste_type_show;
 
-    @OneToMany(mappedBy = "show")
+    @OneToMany(mappedBy = "shows")
     private Set<Representations> representations;
 
-    @OneToMany(mappedBy = "show")
+    @OneToMany(mappedBy = "shows")
     private Set<Reviews> reviews;
 
     // Relation Many To One
