@@ -20,4 +20,8 @@ public class ArtistService {
         return artists;
     }
 
+    public Artists getArtist(long id){
+        return artistRepository.findById(id);
+    }
+
 }
