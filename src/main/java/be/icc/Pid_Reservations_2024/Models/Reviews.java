@@ -25,6 +25,15 @@ public class Reviews {
     @Column(name = "update_ad")
     private LocalDateTime update_ad;
 
+    // Relation Many To One
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Users users;
+
+    @ManyToOne
+    @JoinColumn(name = "show_id", referencedColumnName = "id")
+    private Shows shows;
+
     // Constructor by default
     protected Reviews() {}
 

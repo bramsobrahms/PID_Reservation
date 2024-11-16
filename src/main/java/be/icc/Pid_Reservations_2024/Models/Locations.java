@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Getter @Setter
 @Table(name = "Locations")
@@ -22,6 +24,18 @@ public class Locations {
     private String website;
     @Column(name = "phone", length = 30)
     private String phone;
+
+    // Relation One To Many
+    @OneToMany(mappedBy = "locations")
+    private Set<Representations> representations;
+
+    @OneToMany(mappedBy = "locations")
+    private Set<Shows> shows;
+
+    // Relation Many To One
+    @ManyToOne
+    @JoinColumn(name = "locality", referencedColumnName = "id")
+    private Localities locality;
 
     // Constructor by default
     protected Locations() {}

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -22,6 +23,10 @@ public class Prices {
     private LocalDate start_date;
     @Column(name = "end_date")
     private LocalDate end_date;
+
+    // Relation One To Many
+    @OneToMany(mappedBy = "price")
+    private Set<Representation_Reservation> representation_reservations;
 
     // Constructor by default
     public Prices() { }

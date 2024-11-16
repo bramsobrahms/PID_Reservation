@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Getter @Setter
 @Table(name = "Localities")
@@ -16,6 +18,10 @@ public class Localities {
     private String postal_code;
     @Column(name = "locality", length = 60)
     private String locality;
+
+    // Relation One To Many
+    @OneToMany(mappedBy = "locality")
+    private Set<Locations> locations;
 
     // Constructor without param
     public Localities() { }

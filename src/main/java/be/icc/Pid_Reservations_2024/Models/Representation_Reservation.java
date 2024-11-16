@@ -16,6 +16,19 @@ public class Representation_Reservation {
     @Column(name = "quantity", length = 4, columnDefinition = "TINYINT")
     private Short quantity;
 
+    // Relation Many to One
+    @ManyToOne
+    @JoinColumn(name = "price_id", referencedColumnName = "id")
+    private Prices price;
+
+    @ManyToOne
+    @JoinColumn(name = "representation_id", referencedColumnName = "id")
+    private Representations representations;
+
+    @ManyToOne
+    @JoinColumn(name = "reservation_id", referencedColumnName = "id")
+    private Reservations reservation;
+
     // Constructor by default
     protected Representation_Reservation() {}
 
