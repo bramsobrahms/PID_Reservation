@@ -46,7 +46,7 @@ public class ArtistController {
 
         model.addAttribute("artist",artist);
 
-        return "artist/create";
+        return "Artist/create";
     }
 
     @PostMapping("/artist/create")
