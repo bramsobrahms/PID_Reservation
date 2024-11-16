@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Getter @Setter
 @Table(name = "Types")
@@ -18,6 +20,10 @@ public class Types {
     @NotBlank(message = "The type must not be empty")
     @Size(max=60, message = "The type must be 60 characters")
     private String type;
+
+    // Relation One to Many
+    @OneToMany(mappedBy = "type")
+    private Set<Artiste_Type> artiste_type;
 
     // Constructor by default
     protected Types() {}

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -27,6 +28,10 @@ public class Artists {
     private String firstname;
     @Column(name = "birthdate", length = 150)
     private LocalDate birthdate;
+
+    // Relation One To Many
+    @OneToMany(mappedBy = "artist")
+    private Set<Artiste_Type> artisteTypes;
 
     // Constructor by default
     protected Artists() { }
@@ -54,6 +59,5 @@ public class Artists {
                 ", birthdate=' " + birthdate + '\'' +
                 '}';
     }
-
 
 }

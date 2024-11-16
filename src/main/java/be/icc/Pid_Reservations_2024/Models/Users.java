@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -26,6 +27,16 @@ public class Users {
     private String email;
     @Column(name = "language", length = 2)
     private String language;
+
+    // Relation One To Many
+    @OneToMany(mappedBy = "users")
+    private Set<Reservations> reservations;
+
+    @OneToMany(mappedBy = "users")
+    private Set<Role_User> role_user;
+
+    @OneToMany(mappedBy = "users")
+    private Set<Reviews> reviews;
 
     // Constructor by default
     protected Users() {}

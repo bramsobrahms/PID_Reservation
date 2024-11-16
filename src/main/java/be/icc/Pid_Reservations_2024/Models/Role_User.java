@@ -13,6 +13,15 @@ public class Role_User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Relation Many To One
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    private Roles roles;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Users users;
+
     // Constructor by default
     protected Role_User() {}
 
