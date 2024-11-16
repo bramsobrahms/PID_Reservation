@@ -27,9 +27,13 @@ public class ArtistService {
     public void addArtist(Artists artist){
         artistRepository.save(artist);
     }
+
     public void updateArtist(long id, Artists artist){
         artistRepository.save(artist);
     }
 
+    public void deleteArtist(long id){
+        artistRepository.deleteById(id);
+    }
 
 }
