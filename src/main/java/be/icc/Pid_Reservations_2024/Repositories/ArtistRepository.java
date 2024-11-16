@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface ArtistRepository extends CrudRepository<Artists, Long> {
 
     Artists findById(long id);
+
+    Artists save(Artists artists);
 }

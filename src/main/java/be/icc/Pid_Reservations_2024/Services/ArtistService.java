@@ -24,4 +24,8 @@ public class ArtistService {
         return artistRepository.findById(id);
     }
 
+    public void addArtist(Artists artist){
+        artistRepository.save(artist);
+    }
+
 }
