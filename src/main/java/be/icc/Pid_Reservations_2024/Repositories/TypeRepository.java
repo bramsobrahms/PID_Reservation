@@ -7,4 +7,6 @@ public interface TypeRepository extends CrudRepository<Types, Long> {
 
     Types findById(long id);
 
+    Types save(Types type);
+
 }
