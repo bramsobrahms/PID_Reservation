@@ -26,14 +26,14 @@ public class TypeControlle {
         return "Type/index";
     }
 
-    @GetMapping("type/{id}")
+    @GetMapping("/type/{id}")
     public String show(@PathVariable("id") long id, Model model) {
         Types type = typeService.getType(id);
 
         model.addAttribute("type", type);
         model.addAttribute("title", "Type Details");
 
-        return "type/show";
+        return "Type/show";
     }
 
 }
