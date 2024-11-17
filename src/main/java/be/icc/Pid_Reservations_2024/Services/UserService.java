@@ -28,4 +28,8 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void updateUser(long id, Users user) {
+        userRepository.save(user);
+    }
+
 }
