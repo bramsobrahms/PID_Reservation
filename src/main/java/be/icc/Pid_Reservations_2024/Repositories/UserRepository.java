@@ -7,4 +7,6 @@ public interface UserRepository extends CrudRepository<Users, Long> {
 
     Users findById(long id);
 
+    Users findByLogin(String login);
+
 }
