@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TypeService {
@@ -21,7 +22,9 @@ public class TypeService {
     }
 
     public Types getType(long id){
-        return typeRepository.findById(id);
+        Optional<Types> typeId = typeRepository.findById(id);
+
+        return typeId.isPresent() ? typeId.get() : null;
     }
 
     public void createType(Types type){
