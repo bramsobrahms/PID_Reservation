@@ -29,7 +29,7 @@ public class Prices {
     private Set<Representation_Reservation> representation_reservations;
 
     // Constructor by default
-    public Prices() { }
+    protected Prices() { }
 
     // Constructor with params
     public Prices(Long id, String type, Double price, LocalDate start_date, LocalDate end_date) {
