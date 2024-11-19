@@ -25,6 +25,10 @@ public class Roles {
     protected Roles() { }
 
     //Constructor with params
+    public Roles(String role) {
+        super();
+        this.role = role;
+    }
     public Roles(Long id, String role) {
         this.id = id;
         this.role = role;
