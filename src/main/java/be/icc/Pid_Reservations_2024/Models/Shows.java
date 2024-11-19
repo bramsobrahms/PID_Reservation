@@ -44,5 +44,5 @@ public class Shows {
     private Locations locations;
 
     // Constructor by default
-    public Shows() {}
+    protected Shows() {}
 }
