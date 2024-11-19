@@ -15,7 +15,7 @@ public class Localities {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "postal_code", length = 6)
-    private String postal_code;
+    private String postalCode;
     @Column(name = "locality", length = 60)
     private String locality;
 
@@ -29,7 +29,7 @@ public class Localities {
     // Constructor with params
     public Localities(Long id, String postal_code, String locality) {
         this.id = id;
-        this.postal_code = postal_code;
+        this.postalCode = postal_code;
         this.locality = locality;
     }
 
@@ -37,7 +37,7 @@ public class Localities {
     @Override
     public String toString() {
         return "Localities{" +
-                "postal_code='" + postal_code + '\'' +
+                "postal_code='" + postalCode + '\'' +
                 ", locality='" + locality + '\'' +
                 '}';
     }
