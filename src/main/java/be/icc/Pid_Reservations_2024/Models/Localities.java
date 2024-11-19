@@ -24,7 +24,7 @@ public class Localities {
     private Set<Locations> locations;
 
     // Constructor without param
-    public Localities() { }
+    protected Localities() { }
 
     // Constructor with params
     public Localities(Long id, String postal_code, String locality) {
