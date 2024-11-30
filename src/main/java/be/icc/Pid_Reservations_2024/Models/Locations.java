@@ -53,4 +53,17 @@ public class Locations {
         this.locality = locality;
     }
 
+    // ToString
+    @Override
+    public String toString() {
+        return "Locations{" +
+                "id=" + id +
+                ", slug='" + slug + '\'' +
+                ", designation='" + designation + '\'' +
+                ", address='" + address + '\'' +
+                ", website='" + website + '\'' +
+                ", phone='" + phone + '\'' +
+                ", locality=" + locality +
+                '}';
+    }
 }
