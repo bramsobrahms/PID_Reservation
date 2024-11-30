@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,7 +31,7 @@ public class Artists {
 
     // Relation One To Many
     @OneToMany(mappedBy = "artist")
-    private Set<Artiste_Type> artisteTypes;
+    private List<Artiste_Type> artisteTypes;
 
     // Constructor by default
     protected Artists() { }
