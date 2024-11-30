@@ -1,9 +1,11 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import com.github.slugify.Slugify;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Locale;
 import java.util.Set;
 
 @Entity
@@ -38,5 +40,18 @@ public class Locations {
     private Localities locality;
 
     // Constructor by default
-    protected Locations() {}
+    protected Locations(){};
+
+    // Constructor with params
+    public Locations(String slug, String designation, String address, String website, String phone, Localities locality) {
+        Slugify slg = Slugify.builder().build();
+
+        this.slug = slg.slugify(designation);
+        this.designation = designation;
+        this.address = address;
+        this.website = website;
+        this.phone = phone;
+        this.locality = locality;
+    }
+
 }
