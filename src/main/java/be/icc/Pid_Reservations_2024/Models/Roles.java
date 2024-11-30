@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -19,7 +19,7 @@ public class Roles {
 
     // Relation One To Many
     @OneToMany(mappedBy = "roles")
-    private Set<Role_User> role_user;
+    private List<Role_User> role_user;
 
     // Constructor by default
     protected Roles() { }
