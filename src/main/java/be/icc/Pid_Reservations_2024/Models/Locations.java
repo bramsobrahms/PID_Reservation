@@ -5,8 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Locale;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -29,10 +28,10 @@ public class Locations {
 
     // Relation One To Many
     @OneToMany(mappedBy = "locations")
-    private Set<Representations> representations;
+    private List<Representations> representations;
 
     @OneToMany(mappedBy = "locations")
-    private Set<Shows> shows;
+    private List<Shows> shows;
 
     // Relation Many To One
     @ManyToOne
