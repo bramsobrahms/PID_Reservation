@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -34,21 +34,19 @@ public class Users {
 
     // Relation One To Many
     @OneToMany(mappedBy = "users")
-    private Set<Reservations> reservations;
+    private List<Reservations> reservations;
 
     @OneToMany(mappedBy = "users")
-    private Set<Role_User> role_user;
+    private List<Role_User> role_user;
 
     @OneToMany(mappedBy = "users")
-    private Set<Reviews> reviews;
+    private List<Reviews> reviews;
 
     // Constructor by default
     protected Users() {}
 
     // Constructor with params
-
-
-    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language, String role, LocalDateTime createdAt, Set<Reservations> reservations, Set<Role_User> role_user, Set<Reviews> reviews) {
+    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language, String role, LocalDateTime createdAt) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -58,9 +56,6 @@ public class Users {
         this.language = language;
         this.role = role;
         this.createdAt = createdAt;
-        this.reservations = reservations;
-        this.role_user = role_user;
-        this.reviews = reviews;
     }
 
     // toString with some params
