@@ -5,7 +5,7 @@ ALTER TABLE artiste_type
 
 -- TABLE Locations
 ALTER TABLE locations
-    ADD COLUMN locality BIGINT AFTER id;
+    ADD COLUMN locality BIGINT NOT NULL AFTER id;
 
 -- TABLE Artiste_Type_Show
 ALTER TABLE artiste_type_show
