@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -21,14 +21,13 @@ public class Localities {
 
     // Relation One To Many
     @OneToMany(mappedBy = "locality")
-    private Set<Locations> locations;
+    private List<Locations> locations;
 
     // Constructor without param
     protected Localities() { }
 
     // Constructor with params
-    public Localities(Long id, String postal_code, String locality) {
-        this.id = id;
+    public Localities(String postal_code, String locality) {
         this.postalCode = postal_code;
         this.locality = locality;
     }
