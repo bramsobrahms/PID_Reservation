@@ -24,11 +24,11 @@ public class Representations {
 
     // Relation Many to One
     @ManyToOne
-    @JoinColumn(name = "show_id", referencedColumnName = "id")
+    @JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
     private Shows shows;
 
     @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
     private Locations locations;
 
     // Constructor by default

@@ -41,7 +41,7 @@ public class Shows {
 
     // Relation Many To One
     @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
     private Locations locations;
 
     // Constructor by default

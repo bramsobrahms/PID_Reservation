@@ -18,15 +18,15 @@ public class Representation_Reservation {
 
     // Relation Many to One
     @ManyToOne
-    @JoinColumn(name = "price_id", referencedColumnName = "id")
+    @JoinColumn(name = "price_id", referencedColumnName = "id", nullable = false)
     private Prices price;
 
     @ManyToOne
-    @JoinColumn(name = "representation_id", referencedColumnName = "id")
+    @JoinColumn(name = "representation_id", referencedColumnName = "id", nullable = false)
     private Representations representations;
 
     @ManyToOne
-    @JoinColumn(name = "reservation_id", referencedColumnName = "id")
+    @JoinColumn(name = "reservation_id", referencedColumnName = "id", nullable = false)
     private Reservations reservation;
 
     // Constructor by default

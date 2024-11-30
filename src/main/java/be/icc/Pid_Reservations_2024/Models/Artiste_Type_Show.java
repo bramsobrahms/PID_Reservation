@@ -15,11 +15,11 @@ public class Artiste_Type_Show {
 
     //Relation Many to One
     @ManyToOne
-    @JoinColumn(name = "artist_type_id", referencedColumnName = "id")
+    @JoinColumn(name = "artist_type_id", referencedColumnName = "id", nullable = false)
     private Artiste_Type artist_type;
 
     @ManyToOne
-    @JoinColumn(name = "show_id", referencedColumnName = "id")
+    @JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
     private Shows shows;
 
     // Constructor by default

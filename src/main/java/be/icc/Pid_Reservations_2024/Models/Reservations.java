@@ -26,7 +26,7 @@ public class Reservations {
 
     // Relation Many To One
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private Users users;
 
     // Constructor by default

@@ -40,8 +40,6 @@ public class Types {
     }
 
     // ToString
-
-
     @Override
     public String toString() {
         return "Types{" +
