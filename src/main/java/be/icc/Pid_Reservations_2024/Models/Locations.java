@@ -34,7 +34,7 @@ public class Locations {
 
     // Relation Many To One
     @ManyToOne
-    @JoinColumn(name = "locality", referencedColumnName = "id")
+    @JoinColumn(name = "locality", referencedColumnName = "id", nullable = false)
     private Localities locality;
 
     // Constructor by default
