@@ -15,11 +15,11 @@ public class Role_User {
 
     // Relation Many To One
     @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Roles roles;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private Users users;
 
     // Constructor by default

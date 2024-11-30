@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -23,7 +23,7 @@ public class Types {
 
     // Relation One to Many
     @OneToMany(mappedBy = "type")
-    private Set<Artiste_Type> artiste_type;
+    private List<Artiste_Type> artiste_type;
 
     // Constructor by default
     protected Types() {}
@@ -43,8 +43,8 @@ public class Types {
     @Override
     public String toString() {
         return "Types{" +
-                "type='" + type + '\'' +
+                "id=" + id +
+                ", type='" + type + '\'' +
                 '}';
     }
-
 }

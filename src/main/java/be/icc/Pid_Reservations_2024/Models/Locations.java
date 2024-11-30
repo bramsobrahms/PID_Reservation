@@ -1,10 +1,11 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import com.github.slugify.Slugify;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -27,16 +28,42 @@ public class Locations {
 
     // Relation One To Many
     @OneToMany(mappedBy = "locations")
-    private Set<Representations> representations;
+    private List<Representations> representations;
 
     @OneToMany(mappedBy = "locations")
-    private Set<Shows> shows;
+    private List<Shows> shows;
 
     // Relation Many To One
     @ManyToOne
-    @JoinColumn(name = "locality", referencedColumnName = "id")
+    @JoinColumn(name = "locality", referencedColumnName = "id", nullable = false)
     private Localities locality;
 
     // Constructor by default
-    protected Locations() {}
+    protected Locations(){};
+
+    // Constructor with params
+    public Locations(String slug, String designation, String address, String website, String phone, Localities locality) {
+        Slugify slg = Slugify.builder().build();
+
+        this.slug = slg.slugify(designation);
+        this.designation = designation;
+        this.address = address;
+        this.website = website;
+        this.phone = phone;
+        this.locality = locality;
+    }
+
+    // ToString
+    @Override
+    public String toString() {
+        return "Locations{" +
+                "id=" + id +
+                ", slug='" + slug + '\'' +
+                ", designation='" + designation + '\'' +
+                ", address='" + address + '\'' +
+                ", website='" + website + '\'' +
+                ", phone='" + phone + '\'' +
+                ", locality=" + locality +
+                '}';
+    }
 }

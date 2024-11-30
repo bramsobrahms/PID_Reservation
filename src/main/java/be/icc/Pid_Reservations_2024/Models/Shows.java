@@ -1,11 +1,12 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import com.github.slugify.Slugify;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -30,19 +31,45 @@ public class Shows {
 
     // Relation One to Many
     @OneToMany(mappedBy = "shows")
-    private Set<Artiste_Type_Show> artiste_type_show;
+    private List<Artiste_Type_Show> artiste_type_show;
 
     @OneToMany(mappedBy = "shows")
-    private Set<Representations> representations;
+    private List<Representations> representations;
 
     @OneToMany(mappedBy = "shows")
-    private Set<Reviews> reviews;
+    private List<Reviews> reviews;
 
     // Relation Many To One
     @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
     private Locations locations;
 
     // Constructor by default
     protected Shows() {}
+
+    // Constructor with params
+    public Shows(String title, String posterUrl, Date created_in, Boolean bookable) {
+        Slugify slg = Slugify.builder().build();
+
+        this.slug = slg.slugify(title);
+        this.title = title;
+        this.posterUrl = posterUrl;
+        this.created_in = created_in;
+        this.bookable = bookable;
+    }
+
+    // ToString
+    @Override
+    public String toString() {
+        return "Shows{" +
+                "bookable=" + bookable +
+                ", created_in=" + created_in +
+                ", posterUrl='" + posterUrl + '\'' +
+                ", slug='" + slug + '\'' +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", duration=" + duration +
+                ", locations=" + locations +
+                '}';
+    }
 }
