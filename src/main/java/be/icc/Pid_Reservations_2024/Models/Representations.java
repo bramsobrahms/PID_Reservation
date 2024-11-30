@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -20,7 +20,7 @@ public class Representations {
 
     // Relation One To Many
     @OneToMany(mappedBy = "representations")
-    private Set<Representation_Reservation> representation_reservations;
+    private List<Representation_Reservation> representation_reservations;
 
     // Relation Many to One
     @ManyToOne
@@ -34,4 +34,20 @@ public class Representations {
     // Constructor by default
     protected Representations() {}
 
+    // Constructor with params
+    public Representations(Long id, LocalDateTime schedule, Shows shows) {
+        this.id = id;
+        this.schedule = schedule;
+        this.shows = shows;
+    }
+
+    // ToString
+    @Override
+    public String toString() {
+        return "Representations{" +
+                "id=" + id +
+                ", schedule=" + schedule +
+                ", shows=" + shows +
+                '}';
+    }
 }
