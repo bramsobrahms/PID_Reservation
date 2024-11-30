@@ -1,7 +1,7 @@
 -- TABLE Artiste_Type
 ALTER TABLE artiste_type
-    ADD COLUMN artist_id BIGINT AFTER id,
-    ADD COLUMN type_id BIGINT AFTER artist_id;
+    ADD COLUMN artist_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN type_id BIGINT NOT NULL AFTER artist_id;
 
 -- TABLE Locations
 ALTER TABLE locations
@@ -9,37 +9,37 @@ ALTER TABLE locations
 
 -- TABLE Artiste_Type_Show
 ALTER TABLE artiste_type_show
-    ADD COLUMN artist_type_id BIGINT AFTER id,
-    ADD COLUMN show_id BIGINT AFTER artist_type_id;
+    ADD COLUMN artist_type_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN show_id BIGINT NOT NULL AFTER artist_type_id;
 
 -- TABLE Representation_Reservation
 ALTER TABLE representation_reservation
-    ADD COLUMN price_id BIGINT AFTER id,
-    ADD COLUMN representation_id BIGINT AFTER price_id,
-    ADD COLUMN reservation_id BIGINT AFTER representation_id;
+    ADD COLUMN price_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN representation_id BIGINT NOT NULL AFTER price_id,
+    ADD COLUMN reservation_id BIGINT NOT NULL AFTER representation_id;
 
 -- TABLE Representations
 ALTER TABLE representations
-    ADD COLUMN location_id BIGINT AFTER id,
-    ADD COLUMN show_id BIGINT AFTER location_id;
+    ADD COLUMN location_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN show_id BIGINT NOT NULL AFTER location_id;
 
 -- TABLE Shows
 ALTER TABLE shows
-    ADD COLUMN location_id BIGINT AFTER id;
+    ADD COLUMN location_id BIGINT NOT NULL AFTER id;
 
 -- TABLE Reservations
 ALTER TABLE reservations
-    ADD COLUMN user_id BIGINT AFTER id;
+    ADD COLUMN user_id BIGINT NOT NULL AFTER id;
 
 -- TABLE Role_User
 ALTER TABLE role_user
-    ADD COLUMN role_id BIGINT AFTER id,
-    ADD COLUMN user_id BIGINT AFTER role_id;
+    ADD COLUMN role_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN user_id BIGINT NOT NULL AFTER role_id;
 
 -- TABLE Reviews
 ALTER TABLE reviews
-    ADD COLUMN show_id BIGINT AFTER id,
-    ADD COLUMN user_id BIGINT AFTER show_id;
+    ADD COLUMN show_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN user_id BIGINT NOT NULL AFTER show_id;
 
 -- Add Constraints for Locations
 ALTER TABLE locations
