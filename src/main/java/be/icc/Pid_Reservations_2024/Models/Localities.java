@@ -20,7 +20,7 @@ public class Localities {
     private String locality;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "locality")
+    @OneToMany(mappedBy = "localities")
     private List<Locations> locations;
 
     // Constructor without param

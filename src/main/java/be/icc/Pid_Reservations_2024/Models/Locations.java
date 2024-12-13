@@ -35,14 +35,14 @@ public class Locations {
 
     // Relation Many To One
     @ManyToOne
-    @JoinColumn(name = "locality", referencedColumnName = "id", nullable = false)
-    private Localities locality;
+    @JoinColumn(name = "locality_id", referencedColumnName = "id", nullable = false)
+    private Localities localities;
 
     // Constructor by default
     protected Locations(){};
 
     // Constructor with params
-    public Locations(String slug, String designation, String address, String website, String phone, Localities locality) {
+    public Locations(String slug, String designation, String address, String website, String phone, Localities localities) {
         Slugify slg = Slugify.builder().build();
 
         this.slug = slg.slugify(designation);
@@ -50,7 +50,7 @@ public class Locations {
         this.address = address;
         this.website = website;
         this.phone = phone;
-        this.locality = locality;
+        this.localities = localities;
     }
 
     // ToString
@@ -63,7 +63,7 @@ public class Locations {
                 ", address='" + address + '\'' +
                 ", website='" + website + '\'' +
                 ", phone='" + phone + '\'' +
-                ", locality=" + locality +
+                ", locality=" + localities +
                 '}';
     }
 }
