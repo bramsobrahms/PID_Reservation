@@ -5,7 +5,7 @@ ALTER TABLE artiste_type
 
 -- TABLE Locations
 ALTER TABLE locations
-    ADD COLUMN locality BIGINT NOT NULL AFTER id;
+    ADD COLUMN locality_id BIGINT NOT NULL AFTER id;
 
 -- TABLE Artiste_Type_Show
 ALTER TABLE artiste_type_show
@@ -43,7 +43,7 @@ ALTER TABLE reviews
 
 -- Add Constraints for Locations
 ALTER TABLE locations
-    ADD CONSTRAINT locations_locality UNIQUE (locality);
+    ADD CONSTRAINT locations_localities UNIQUE (locality_id);
 
 ALTER TABLE locations
     ADD CONSTRAINT locations_id UNIQUE (id);
@@ -114,5 +114,5 @@ ALTER TABLE reviews
 
 -- Add Constraints for Locations (Locality)
 ALTER TABLE locations
-    ADD CONSTRAINT fk_locations_locality FOREIGN KEY (locality)
+    ADD CONSTRAINT fk_locations_locality FOREIGN KEY (locality_id)
         REFERENCES localities (id) ON UPDATE CASCADE ON DELETE CASCADE;
