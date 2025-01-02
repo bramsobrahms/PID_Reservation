@@ -55,12 +55,6 @@ CREATE TABLE IF NOT EXISTS reviews (
     PRIMARY KEY (id)
 );
 
--- Table: role_user
-CREATE TABLE IF NOT EXISTS role_user (
-    id BIGINT NOT NULL,
-    PRIMARY KEY (id)
-);
-
 -- Table: shows
 CREATE TABLE IF NOT EXISTS shows (
     id BIGINT NOT NULL AUTO_INCREMENT,

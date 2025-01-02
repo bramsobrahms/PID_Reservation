@@ -1,5 +1,6 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import be.icc.Pid_Reservations_2024.Enums.Roles;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,8 +28,8 @@ public class Users {
     private String email;
     @Column(name = "language", length = 2)
     private String language;
-    @Column(name = "role")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Roles role;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -37,16 +38,13 @@ public class Users {
     private List<Reservations> reservations;
 
     @OneToMany(mappedBy = "users")
-    private List<Role_User> role_user;
-
-    @OneToMany(mappedBy = "users")
     private List<Reviews> reviews;
 
     // Constructor by default
     protected Users() {}
 
     // Constructor with params
-    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language, String role, LocalDateTime createdAt) {
+    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language, Roles role, LocalDateTime createdAt) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -67,6 +65,7 @@ public class Users {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", language='" + language + '\'' +
+                ", language='" + role + '\'' +
                 '}';
     }
 

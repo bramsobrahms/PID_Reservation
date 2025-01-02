@@ -31,11 +31,6 @@ ALTER TABLE shows
 ALTER TABLE reservations
     ADD COLUMN user_id BIGINT NOT NULL AFTER id;
 
--- TABLE Role_User
-ALTER TABLE role_user
-    ADD COLUMN role_id BIGINT NOT NULL AFTER id,
-    ADD COLUMN user_id BIGINT NOT NULL AFTER role_id;
-
 -- TABLE Reviews
 ALTER TABLE reviews
     ADD COLUMN show_id BIGINT NOT NULL AFTER id,
@@ -92,15 +87,6 @@ ALTER TABLE shows
 -- Add Constraints for Reservations
 ALTER TABLE reservations
     ADD CONSTRAINT fk_reservations_user FOREIGN KEY (user_id)
-        REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE;
-
--- Add Constraints for Role_User
-ALTER TABLE role_user
-    ADD CONSTRAINT fk_role_user_role FOREIGN KEY (role_id)
-        REFERENCES roles (id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-ALTER TABLE role_user
-    ADD CONSTRAINT fk_role_user_user FOREIGN KEY (user_id)
         REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- Add Constraints for Reviews

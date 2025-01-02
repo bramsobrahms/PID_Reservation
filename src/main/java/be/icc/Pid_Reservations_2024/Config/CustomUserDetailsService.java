@@ -39,7 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Users user = userRepository.findByLogin(username);
         return new org.springframework.security.core.userdetails.User(
                 user.getLogin(), user.getPassword(),
-                getGrantedAuthorities(user.getRole())
+                getGrantedAuthorities(String.valueOf(user.getRole()))
         );
     }
 

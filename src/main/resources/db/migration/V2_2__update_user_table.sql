@@ -1,3 +1,3 @@
 ALTER TABLE users
-    ADD COLUMN role VARCHAR(20),
+    ADD COLUMN role enum('ADMIN','MEMBER') DEFAULT NULL,
     ADD COLUMN created_at TIMESTAMP;
