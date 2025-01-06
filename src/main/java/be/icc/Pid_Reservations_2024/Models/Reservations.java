@@ -1,15 +1,19 @@
 package be.icc.Pid_Reservations_2024.Models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Getter @Setter
 @Table(name = "Reservations")
+@Data
+@NoArgsConstructor
+@Getter @Setter
 public class Reservations {
 
     @Id
@@ -28,8 +32,5 @@ public class Reservations {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private Users users;
-
-    // Constructor by default
-    protected Reservations() { }
 
 }

@@ -2,14 +2,18 @@ package be.icc.Pid_Reservations_2024.Models;
 
 import com.github.slugify.Slugify;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Getter @Setter
 @Table(name = "Locations")
+@Data
+@NoArgsConstructor
+@Getter @Setter
 public class Locations {
 
     @Id
@@ -37,9 +41,6 @@ public class Locations {
     @ManyToOne
     @JoinColumn(name = "locality_id", referencedColumnName = "id", nullable = false)
     private Localities localities;
-
-    // Constructor by default
-    protected Locations(){};
 
     // Constructor with params
     public Locations(String slug, String designation, String address, String website, String phone, Localities localities) {

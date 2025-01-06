@@ -2,15 +2,19 @@ package be.icc.Pid_Reservations_2024.Models;
 
 import be.icc.Pid_Reservations_2024.Enums.Roles;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter @Setter
 @Table(name ="Users")
+@Data
+@NoArgsConstructor
+@Getter @Setter
 public class Users {
 
     @Id
@@ -39,9 +43,6 @@ public class Users {
 
     @OneToMany(mappedBy = "users")
     private List<Reviews> reviews;
-
-    // Constructor by default
-    protected Users() {}
 
     // Constructor with params
     public Users(Long id, String login, String password, String firstName, String lastName, String email, String language, Roles role, LocalDateTime createdAt) {

@@ -1,12 +1,16 @@
 package be.icc.Pid_Reservations_2024.Models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
 @Table(name = "Artiste_Type_Show")
+@Data
+@NoArgsConstructor
+@Getter @Setter
 public class Artiste_Type_Show {
 
     @Id
@@ -21,8 +25,5 @@ public class Artiste_Type_Show {
     @ManyToOne
     @JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
     private Shows shows;
-
-    // Constructor by default
-    protected Artiste_Type_Show() {}
 
 }
