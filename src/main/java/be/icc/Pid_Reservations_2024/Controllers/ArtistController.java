@@ -50,10 +50,11 @@ public class ArtistController {
     }
 
     @PostMapping("/artist/create")
-    public String store(@Valid @ModelAttribute Artists artist, BindingResult bindingResult, Model model, RedirectAttributes redirAttrs) {
+    public String store(@Valid @ModelAttribute("artist") Artists artist, BindingResult bindingResult, Model model, RedirectAttributes redirAttrs) {
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("errorMessage", "Failure of the artist’s creation!");
+            return "Artist/create";
         }
 
         artistService.addArtist(artist);
