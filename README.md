@@ -8,8 +8,8 @@
 + Logiciel de versioning : **Github**
 + Logiciel de projet : **project from Github**
 
-+ # *Itération 2 - Models*
++ # *Itération 2 - Modèles*
 
 + Ajouter les entités
-+ Ajouter les mapping relationnel
++ Ajouter les mappings relationnels
 + Migrer la base de données

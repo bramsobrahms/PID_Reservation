@@ -27,20 +27,21 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    /**
-     * Loads the user details by username.
-     *
-     * @param username the username of the user to be loaded
-     * @return the {@link UserDetails} object containing the user's credentials and authorities
-     * @throws UsernameNotFoundException if the user with the given username is not found
-     */
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users user = userRepository.findByLogin(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User " + username + " not found");
+        }
+
         return new org.springframework.security.core.userdetails.User(
-                user.getLogin(), user.getPassword(),
-                getGrantedAuthorities(user.getRole())
+                username,
+                user.getPassword(),
+                getGrantedAuthorities(user.getRole().toString())
         );
+
     }
 
     /**

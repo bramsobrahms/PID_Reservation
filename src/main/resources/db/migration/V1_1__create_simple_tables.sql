@@ -25,13 +25,6 @@ CREATE TABLE IF NOT EXISTS prices (
     PRIMARY KEY (id)
 );
 
--- Table: roles
-CREATE TABLE IF NOT EXISTS roles (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    role VARCHAR(30),
-    PRIMARY KEY (id)
-);
-
 -- Table: types
 CREATE TABLE IF NOT EXISTS types (
     id BIGINT NOT NULL AUTO_INCREMENT,
