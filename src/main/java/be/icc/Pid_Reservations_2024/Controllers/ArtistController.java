@@ -93,7 +93,7 @@ public class ArtistController {
         }
         artistService.updateArtist(id, artist);
 
-        redirAttrs.addFlashAttribute("success", "Artist successfully modified");
+        redirAttrs.addFlashAttribute("successMessage", "Artist successfully modified");
 
         return "redirect:/artist/"+artist.getId();
     }
@@ -104,7 +104,7 @@ public class ArtistController {
 
         if(artistExisting != null) {
             artistService.deleteArtist(id);
-            redirAttrs.addFlashAttribute("success", "Artist successfully deleted!");
+            redirAttrs.addFlashAttribute("successMessage", "Artist successfully deleted!");
         } else {
             redirAttrs.addFlashAttribute("errorMessage", "Failed to delete artist !");
         }
