@@ -1,15 +1,19 @@
 package be.icc.Pid_Reservations_2024.Models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Getter @Setter
 @Table(name = "Prices")
+@Data
+@NoArgsConstructor
+@Getter @Setter
 public class Prices {
 
     @Id
@@ -27,9 +31,6 @@ public class Prices {
     // Relation One To Many
     @OneToMany(mappedBy = "price")
     private Set<Representation_Reservation> representation_reservations;
-
-    // Constructor by default
-    protected Prices() { }
 
     // Constructor with params
     public Prices(Long id, String type, Double price, LocalDate start_date, LocalDate end_date) {

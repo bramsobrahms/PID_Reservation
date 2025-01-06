@@ -4,7 +4,10 @@ package be.icc.Pid_Reservations_2024.Enums;
 public enum Roles {
 
     ADMIN("admin"),
-    MEMBER("member");
+    MEMBER("member"),
+    AFFILIATE("affiliate"),
+    PRESS("press"),
+    PRODUCER("producer");
 
     private String role;
 

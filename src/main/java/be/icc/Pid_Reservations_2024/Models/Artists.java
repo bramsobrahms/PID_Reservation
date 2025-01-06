@@ -3,16 +3,19 @@ package be.icc.Pid_Reservations_2024.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "Artists")
+@Data
+@NoArgsConstructor
+@Getter @Setter
 public class Artists {
 
     @Id
@@ -32,9 +35,6 @@ public class Artists {
     // Relation One To Many
     @OneToMany(mappedBy = "artist")
     private List<Artiste_Type> artisteTypes;
-
-    // Constructor by default
-    protected Artists() { }
 
     // Constructor with params
     public Artists(String birthdate, String firstname, String lastname, Long id) {

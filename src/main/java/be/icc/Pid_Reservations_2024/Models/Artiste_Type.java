@@ -1,15 +1,18 @@
 package be.icc.Pid_Reservations_2024.Models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Getter @Setter
 @Table( name = "Artiste_Type")
+@Data @NoArgsConstructor
+@Getter @Setter
 public class Artiste_Type {
 
     @Id
@@ -28,9 +31,6 @@ public class Artiste_Type {
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id", nullable = false)
     private Types type;
-
-    // Constructor by default
-    protected Artiste_Type() {}
 
     // Constructor with params
     public Artiste_Type(Artists artist, Types type, Long id) {
