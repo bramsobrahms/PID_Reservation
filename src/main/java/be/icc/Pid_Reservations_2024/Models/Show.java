@@ -11,11 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Shows")
+@Table(name = "shows")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Shows {
+public class Show {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,22 +34,26 @@ public class Shows {
     private Boolean bookable;
 
     // Relation One to Many
-    @OneToMany(mappedBy = "shows")
-    private List<Artiste_Type_Show> artiste_type_show;
+    @OneToMany(mappedBy = "show")
+    private List<Representation> representations;
 
-    @OneToMany(mappedBy = "shows")
-    private List<Representations> representations;
+    @OneToMany(mappedBy = "show")
+    private List<Review> reviews;
 
-    @OneToMany(mappedBy = "shows")
-    private List<Reviews> reviews;
+    @OneToMany(mappedBy = "show")
+    private List<ArtisteType> artiste_type;
 
     // Relation Many To One
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
-    private Locations locations;
+    private Location location;
+
+    // Relation Many To Many
+    @ManyToMany(mappedBy = "shows")
+    List<Price> prices;
 
     // Constructor with params
-    public Shows(String title, String posterUrl, Date created_in, Boolean bookable) {
+    public Show(String title, String posterUrl, Date created_in, Boolean bookable) {
         Slugify slg = Slugify.builder().build();
 
         this.slug = slg.slugify(title);
@@ -70,7 +74,7 @@ public class Shows {
                 ", id=" + id +
                 ", title='" + title + '\'' +
                 ", duration=" + duration +
-                ", locations=" + locations +
+                ", locations=" + location +
                 '}';
     }
 }

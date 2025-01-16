@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name ="Users")
+@Table(name ="users")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,14 +38,14 @@ public class Users {
     private LocalDateTime createdAt;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "users")
-    private List<Reservations> reservations;
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "users")
-    private List<Reviews> reviews;
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
 
     // Constructor with params
-    public Users(Long id, String login, String password, String firstName, String lastName, String email, String language, Roles role, LocalDateTime createdAt) {
+    public User(Long id, String login, String password, String firstName, String lastName, String email, String language, Roles role, LocalDateTime createdAt) {
         this.id = id;
         this.login = login;
         this.password = password;

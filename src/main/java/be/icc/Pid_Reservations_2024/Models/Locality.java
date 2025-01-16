@@ -9,11 +9,11 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "Localities")
+@Table(name = "localities")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Localities {
+public class Locality {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +24,11 @@ public class Localities {
     private String locality;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "localities")
-    private List<Locations> locations;
+    @OneToMany(mappedBy = "locality")
+    private List<Location> locations;
 
     // Constructor with params
-    public Localities(String postal_code, String locality) {
+    public Locality(String postal_code, String locality) {
         this.postalCode = postal_code;
         this.locality = locality;
     }

@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "Prices")
+@Table(name = "prices")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Prices {
+public class Price {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,10 +30,19 @@ public class Prices {
 
     // Relation One To Many
     @OneToMany(mappedBy = "price")
-    private Set<Representation_Reservation> representation_reservations;
+    private List<RepresentationReservation> representation_reservations;
+
+    // Relation Many to Many
+    @ManyToMany
+    @JoinTable(
+            name = "price_shows",
+            joinColumns = @JoinColumn(name = "price_id"),
+            inverseJoinColumns = @JoinColumn(name = "show_id")
+    )
+    List<Show> shows;
 
     // Constructor with params
-    public Prices(Long id, String type, Double price, LocalDate start_date, LocalDate end_date) {
+    public Price(Long id, String type, Double price, LocalDate start_date, LocalDate end_date) {
         this.id = id;
         this.type = type;
         this.price = price;

@@ -9,11 +9,11 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Reviews")
+@Table(name = "reviews")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Reviews {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,10 @@ public class Reviews {
     // Relation Many To One
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private Users users;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
-    private Shows shows;
+    private Show show;
 
 }

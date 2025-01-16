@@ -8,15 +8,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "Artists")
+@Table(name = "artists")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Artists {
+public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,23 +28,19 @@ public class Artists {
     @NotEmpty(message = "The firstname must no be empty")
     @Size(min=2, max=60, message = "The firstname must be between 2 and 60 characters")
     private String firstname;
-    @Column(name = "birthdate", length = 150)
-    private LocalDate birthdate;
 
     // Relation One To Many
     @OneToMany(mappedBy = "artist")
-    private List<Artiste_Type> artisteTypes;
+    private List<ArtisteType> artisteTypes;
 
     // Constructor with params
-    public Artists(String birthdate, String firstname, String lastname, Long id) {
-        this.birthdate = LocalDate.parse(birthdate);
+    public Artist(String birthdate, String firstname, String lastname, Long id) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.id = id;
     }
 
-    public Artists(String birthdate, String firstname, String lastname) {
-        this.birthdate = LocalDate.parse(birthdate);
+    public Artist(String birthdate, String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -53,10 +48,9 @@ public class Artists {
     // ToString
     @Override
     public String toString() {
-        return "Artists{" +
+        return "Artist{" +
                 ", lastname= '" + lastname + '\'' +
                 ", firstname= '" + firstname + '\'' +
-                ", birthdate=' " + birthdate + '\'' +
                 '}';
     }
 
