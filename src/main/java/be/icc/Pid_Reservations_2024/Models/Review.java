@@ -22,8 +22,8 @@ public class Review {
     private String review;
     @Column(name = "stars", columnDefinition = "TINYINT UNSIGNED")
     private Short stars;
-    @Column(name = "validated")
-    private Boolean validated;
+    @Column(name = "isValidated")
+    private Boolean isValidated;
     @Column(name = "create_at")
     private LocalDateTime create_at;
     @Column(name = "update_ad")

@@ -30,8 +30,8 @@ public class Show {
     private Integer duration;
     @Column(name = "created_in")
     private Date created_in;
-    @Column(name = "bookable", columnDefinition = "TINYINT")
-    private Boolean bookable;
+    @Column(name = "isBookable", columnDefinition = "TINYINT")
+    private Boolean isBookable;
 
     // Relation One to Many
     @OneToMany(mappedBy = "show")
@@ -53,21 +53,21 @@ public class Show {
     List<Price> prices;
 
     // Constructor with params
-    public Show(String title, String posterUrl, Date created_in, Boolean bookable) {
+    public Show(String title, String posterUrl, Date created_in, Boolean isBookable) {
         Slugify slg = Slugify.builder().build();
 
         this.slug = slg.slugify(title);
         this.title = title;
         this.posterUrl = posterUrl;
         this.created_in = created_in;
-        this.bookable = bookable;
+        this.isBookable = isBookable;
     }
 
     // ToString
     @Override
     public String toString() {
         return "Shows{" +
-                "bookable=" + bookable +
+                "bookable=" + isBookable +
                 ", created_in=" + created_in +
                 ", posterUrl='" + posterUrl + '\'' +
                 ", slug='" + slug + '\'' +
