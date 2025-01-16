@@ -1,12 +1,6 @@
 -- Table: artiste_type
-CREATE TABLE IF NOT EXISTS artiste_type (
+CREATE TABLE IF NOT EXISTS artiste_types (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (id)
-);
-
--- Table: artiste_type_show
-CREATE TABLE IF NOT EXISTS artiste_type_show (
-    id BIGINT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -23,7 +17,7 @@ CREATE TABLE IF NOT EXISTS locations (
 );
 
 -- Table: representation_reservation
-CREATE TABLE IF NOT EXISTS representation_reservation (
+CREATE TABLE IF NOT EXISTS representation_reservations (
     id BIGINT NOT NULL AUTO_INCREMENT,
     quantity TINYINT(4),
     PRIMARY KEY (id)
@@ -65,5 +59,11 @@ CREATE TABLE IF NOT EXISTS shows (
     poster_url VARCHAR(255),
     title VARCHAR(255),
     UNIQUE KEY show_slug_key (slug),
+    PRIMARY KEY (id)
+);
+
+-- Table: price_shows
+CREATE TABLE price_shows (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id)
 );
