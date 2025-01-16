@@ -1,19 +1,15 @@
--- TABLE Artiste_Type
-ALTER TABLE artiste_type
+-- TABLE Artiste_Types
+ALTER TABLE artiste_types
     ADD COLUMN artist_id BIGINT NOT NULL AFTER id,
-    ADD COLUMN type_id BIGINT NOT NULL AFTER artist_id;
+    ADD COLUMN type_id BIGINT NOT NULL AFTER artist_id,
+    ADD COLUMN show_id BIGINT NOT NULL AFTER type_id;
 
 -- TABLE Locations
 ALTER TABLE locations
     ADD COLUMN locality_id BIGINT NOT NULL AFTER id;
 
--- TABLE Artiste_Type_Show
-ALTER TABLE artiste_type_show
-    ADD COLUMN artist_type_id BIGINT NOT NULL AFTER id,
-    ADD COLUMN show_id BIGINT NOT NULL AFTER artist_type_id;
-
--- TABLE Representation_Reservation
-ALTER TABLE representation_reservation
+-- TABLE Representation_Reservations
+ALTER TABLE representation_reservations
     ADD COLUMN price_id BIGINT NOT NULL AFTER id,
     ADD COLUMN representation_id BIGINT NOT NULL AFTER price_id,
     ADD COLUMN reservation_id BIGINT NOT NULL AFTER representation_id;
@@ -36,6 +32,11 @@ ALTER TABLE reviews
     ADD COLUMN show_id BIGINT NOT NULL AFTER id,
     ADD COLUMN user_id BIGINT NOT NULL AFTER show_id;
 
+-- TABLE price_show
+ALTER TABLE price_shows
+    ADD COLUMN price_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN show_id BIGINT NOT NULL AFTER price_id;
+
 -- Add Constraints for Locations
 ALTER TABLE locations
     ADD CONSTRAINT locations_localities UNIQUE (locality_id);
@@ -43,35 +44,30 @@ ALTER TABLE locations
 ALTER TABLE locations
     ADD CONSTRAINT locations_id UNIQUE (id);
 
--- Add Constraints for Artiste_Type
-ALTER TABLE artiste_type
-    ADD CONSTRAINT fk_artiste_type_type FOREIGN KEY (type_id)
+-- Add Constraints for Artiste_Types
+ALTER TABLE artiste_types
+    ADD CONSTRAINT fk_artiste_types_type FOREIGN KEY (type_id)
         REFERENCES types (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE artiste_type
-    ADD CONSTRAINT fk_artiste_type_artist FOREIGN KEY (artist_id)
+ALTER TABLE artiste_types
+    ADD CONSTRAINT fk_artiste_types_artist FOREIGN KEY (artist_id)
         REFERENCES artists (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
--- Add Constraints for Artiste_Type_Show
-ALTER TABLE artiste_type_show
-    ADD CONSTRAINT fk_artiste_type_show_artist_type FOREIGN KEY (artist_type_id)
-        REFERENCES artiste_type (id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-ALTER TABLE artiste_type_show
-    ADD CONSTRAINT fk_artiste_type_show_show FOREIGN KEY (show_id)
+ALTER TABLE artiste_types
+    ADD CONSTRAINT fk_artiste_type_show FOREIGN KEY (show_id)
         REFERENCES shows (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
--- Add Constraints for Representation_Reservation
-ALTER TABLE representation_reservation
-    ADD CONSTRAINT fk_representation_reservation_representation FOREIGN KEY (representation_id)
+-- Add Constraints for Representation_Reservations
+ALTER TABLE representation_reservations
+    ADD CONSTRAINT fk_representation_reservations_representation FOREIGN KEY (representation_id)
         REFERENCES representations (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE representation_reservation
-    ADD CONSTRAINT fk_representation_price FOREIGN KEY (price_id)
+ALTER TABLE representation_reservations
+    ADD CONSTRAINT fk_representation_reservations_price FOREIGN KEY (price_id)
         REFERENCES prices (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE representation_reservation
-    ADD CONSTRAINT fk_representation_reservation FOREIGN KEY (reservation_id)
+ALTER TABLE representation_reservations
+    ADD CONSTRAINT fk_representation_reservations_reservation FOREIGN KEY (reservation_id)
         REFERENCES reservations (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- Add Constraints for Representations
@@ -102,3 +98,12 @@ ALTER TABLE reviews
 ALTER TABLE locations
     ADD CONSTRAINT fk_locations_locality FOREIGN KEY (locality_id)
         REFERENCES localities (id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+-- Add Constraints for Price_Shows
+ALTER TABLE price_shows
+    ADD CONSTRAINT fk_price_show_price FOREIGN KEY (price_id)
+        REFERENCES prices (id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE price_shows
+    ADD CONSTRAINT fk_price_show_show FOREIGN KEY (show_id)
+        REFERENCES shows (id) ON UPDATE CASCADE ON DELETE CASCADE;

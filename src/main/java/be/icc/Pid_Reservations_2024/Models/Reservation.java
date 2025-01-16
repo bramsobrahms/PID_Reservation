@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "Reservations")
+@Table(name = "reservations")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Reservations {
+public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +26,11 @@ public class Reservations {
 
     // Relation One To Many
     @OneToMany(mappedBy = "reservation")
-    private Set<Representation_Reservation> representation_reservations;
+    private Set<RepresentationReservation> representation_reservations;
 
     // Relation Many To One
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private Users users;
+    private User user;
 
 }

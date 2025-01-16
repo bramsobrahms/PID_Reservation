@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Representation_Reservation")
+@Table(name = "representation_reservations")
 @Data
 @NoArgsConstructor
 @Getter @Setter
-public class Representation_Reservation {
+public class RepresentationReservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +23,14 @@ public class Representation_Reservation {
     // Relation Many to One
     @ManyToOne
     @JoinColumn(name = "price_id", referencedColumnName = "id", nullable = false)
-    private Prices price;
+    private Price price;
 
     @ManyToOne
     @JoinColumn(name = "representation_id", referencedColumnName = "id", nullable = false)
-    private Representations representations;
+    private Representation representation;
 
     @ManyToOne
     @JoinColumn(name = "reservation_id", referencedColumnName = "id", nullable = false)
-    private Reservations reservation;
+    private Reservation reservation;
 
 }

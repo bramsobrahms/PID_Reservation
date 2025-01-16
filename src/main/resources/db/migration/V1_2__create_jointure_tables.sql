@@ -1,12 +1,6 @@
 -- Table: artiste_type
-CREATE TABLE IF NOT EXISTS artiste_type (
+CREATE TABLE IF NOT EXISTS artiste_types (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (id)
-);
-
--- Table: artiste_type_show
-CREATE TABLE IF NOT EXISTS artiste_type_show (
-    id BIGINT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -23,7 +17,7 @@ CREATE TABLE IF NOT EXISTS locations (
 );
 
 -- Table: representation_reservation
-CREATE TABLE IF NOT EXISTS representation_reservation (
+CREATE TABLE IF NOT EXISTS representation_reservations (
     id BIGINT NOT NULL AUTO_INCREMENT,
     quantity TINYINT(4),
     PRIMARY KEY (id)
@@ -48,7 +42,7 @@ CREATE TABLE IF NOT EXISTS reservations (
 CREATE TABLE IF NOT EXISTS reviews (
     id BIGINT NOT NULL AUTO_INCREMENT,
     stars SMALLINT,
-    validated BOOLEAN,
+    is_validated BOOLEAN,
     create_at TIMESTAMP NULL DEFAULT NULL,
     update_ad TIMESTAMP NULL DEFAULT NULL,
     review TEXT,
@@ -58,12 +52,18 @@ CREATE TABLE IF NOT EXISTS reviews (
 -- Table: shows
 CREATE TABLE IF NOT EXISTS shows (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    bookable TINYINT(1),
+    is_bookable TINYINT(1),
     duration SMALLINT(5) UNSIGNED,
     created_in TIMESTAMP NULL DEFAULT NULL,
     slug VARCHAR(60) NOT NULL,
     poster_url VARCHAR(255),
     title VARCHAR(255),
     UNIQUE KEY show_slug_key (slug),
+    PRIMARY KEY (id)
+);
+
+-- Table: price_shows
+CREATE TABLE price_shows (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id)
 );

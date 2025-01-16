@@ -1,6 +1,6 @@
 package be.icc.Pid_Reservations_2024.Controllers;
 
-import be.icc.Pid_Reservations_2024.Models.Localities;
+import be.icc.Pid_Reservations_2024.Models.Locality;
 import be.icc.Pid_Reservations_2024.Services.LocalitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class LocalityController {
 
     @GetMapping("/localities")
     public String index(Model model) {
-        List<Localities> localities = localitiesService.getAll();
+        List<Locality> localities = localitiesService.getAll();
         model.addAttribute("localities", localities);
         model.addAttribute("title", "List of localities");
         return "Locality/index";
@@ -26,7 +26,7 @@ public class LocalityController {
 
     @GetMapping("/locality/{id}")
     public String show(@PathVariable long id, Model model) {
-        Localities locality = localitiesService.getById(id);
+        Locality locality = localitiesService.getById(id);
         model.addAttribute("locality", locality);
         model.addAttribute("title", "Locality profile");
 
