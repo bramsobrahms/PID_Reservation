@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS reservations (
 CREATE TABLE IF NOT EXISTS reviews (
     id BIGINT NOT NULL AUTO_INCREMENT,
     stars SMALLINT,
-    validated BOOLEAN,
+    is_validated BOOLEAN,
     create_at TIMESTAMP NULL DEFAULT NULL,
     update_ad TIMESTAMP NULL DEFAULT NULL,
     review TEXT,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS reviews (
 -- Table: shows
 CREATE TABLE IF NOT EXISTS shows (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    bookable TINYINT(1),
+    is_bookable TINYINT(1),
     duration SMALLINT(5) UNSIGNED,
     created_in TIMESTAMP NULL DEFAULT NULL,
     slug VARCHAR(60) NOT NULL,
