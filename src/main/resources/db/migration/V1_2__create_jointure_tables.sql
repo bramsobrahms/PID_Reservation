@@ -4,6 +4,12 @@ CREATE TABLE IF NOT EXISTS artiste_types (
     PRIMARY KEY (id)
 );
 
+-- Table: artiste_type
+CREATE TABLE IF NOT EXISTS artiste_type_shows (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id)
+);
+
 -- Table: locations
 CREATE TABLE IF NOT EXISTS locations (
     id BIGINT NOT NULL AUTO_INCREMENT,

@@ -40,9 +40,6 @@ public class Show {
     @OneToMany(mappedBy = "show")
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "show")
-    private List<ArtisteType> artiste_type;
-
     // Relation Many To One
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
@@ -51,6 +48,9 @@ public class Show {
     // Relation Many To Many
     @ManyToMany(mappedBy = "shows")
     List<Price> prices;
+
+    @ManyToMany(mappedBy = "shows")
+    List<ArtisteType> artisteTypes;
 
     // Constructor with params
     public Show(String title, String posterUrl, Date created_in, Boolean isBookable) {
