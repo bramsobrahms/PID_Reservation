@@ -1,8 +1,12 @@
 -- TABLE Artiste_Types
 ALTER TABLE artiste_types
     ADD COLUMN artist_id BIGINT NOT NULL AFTER id,
-    ADD COLUMN type_id BIGINT NOT NULL AFTER artist_id,
-    ADD COLUMN show_id BIGINT NOT NULL AFTER type_id;
+    ADD COLUMN type_id BIGINT NOT NULL AFTER artist_id;
+
+-- TABLE Artiste_Type_Shows
+ALTER TABLE artiste_type_shows
+    ADD COLUMN artiste_type_id BIGINT NOT NULL AFTER id,
+    ADD COLUMN show_id BIGINT NOT NULL AFTER artiste_type_id;
 
 -- TABLE Locations
 ALTER TABLE locations
@@ -53,8 +57,13 @@ ALTER TABLE artiste_types
     ADD CONSTRAINT fk_artiste_types_artist FOREIGN KEY (artist_id)
         REFERENCES artists (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE artiste_types
-    ADD CONSTRAINT fk_artiste_type_show FOREIGN KEY (show_id)
+-- Add Constraints for Artiste_Type_Shows
+ALTER TABLE artiste_type_shows
+    ADD CONSTRAINT fk_artiste_type_show_artiste_type FOREIGN KEY (artiste_type_id)
+        REFERENCES artiste_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE artiste_type_shows
+    ADD CONSTRAINT fk_artiste_type_show_show FOREIGN KEY (show_id)
         REFERENCES shows (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- Add Constraints for Representation_Reservations
