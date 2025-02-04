@@ -10,13 +10,13 @@ VALUES
     (8, 4, 8, 2),  -- Rang 1 Réduit pour la représentation de "David Copperfield - Magie Illusionniste", réservation 8
     (9, 5, 9, 3),  -- VIP Réduit pour la représentation de "Ariana Grande en Concert à Nice", réservation 9
     (10, 6, 10, 1), -- Rang 4 pour la représentation de "Quentin Tarantino présente ses Films à Paris", réservation 10
-    (1, 7, 11, 1),  -- VIP pour la représentation de "Banksy – Art Contemporain", réservation 11
-    (2, 7, 12, 2),  -- Rang 1 pour la représentation de "Banksy – Art Contemporain", réservation 12
-    (3, 8, 13, 2),  -- Standard pour la représentation de "Misty Copeland – Ballet Classique", réservation 13
-    (4, 8, 14, 1),  -- Rang 2 pour la représentation de "Misty Copeland – Ballet Classique", réservation 14
-    (5, 9, 15, 3),  -- Privé pour la représentation de "Lorde en Concert à Toulouse", réservation 15
-    (6, 9, 16, 2),  -- Rang 3 pour la représentation de "Lorde en Concert à Toulouse", réservation 16
-    (7, 10, 17, 4), -- Premium pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 17
-    (8, 10, 18, 2), -- Rang 1 Réduit pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 18
-    (9, 10, 19, 5), -- VIP Réduit pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 19
-    (10, 9, 20, 1); -- Rang 4 pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 20
+    (1, 7, 10, 1),  -- VIP pour la représentation de "Banksy – Art Contemporain", réservation 11
+    (2, 7, 9, 2),  -- Rang 1 pour la représentation de "Banksy – Art Contemporain", réservation 12
+    (3, 8, 8, 2),  -- Standard pour la représentation de "Misty Copeland – Ballet Classique", réservation 13
+    (4, 8, 7, 1),  -- Rang 2 pour la représentation de "Misty Copeland – Ballet Classique", réservation 14
+    (5, 9, 6, 3),  -- Privé pour la représentation de "Lorde en Concert à Toulouse", réservation 15
+    (6, 9, 5, 2),  -- Rang 3 pour la représentation de "Lorde en Concert à Toulouse", réservation 16
+    (7, 10, 4, 4), -- Premium pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 17
+    (8, 10, 3, 2), -- Rang 1 Réduit pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 18
+    (9, 10, 2, 5), -- VIP Réduit pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 19
+    (10, 9, 1, 1); -- Rang 4 pour la représentation de "Gad Elmaleh – Humoriste à Nantes", réservation 20
