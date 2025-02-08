@@ -127,6 +127,13 @@
 			<artifactId>slugify</artifactId>
 			<version>3.0.7</version>f
 		</dependency>
+
+		<!-- Hateoas -->
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+			<version>3.0.0-M1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
