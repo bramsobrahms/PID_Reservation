@@ -21,7 +21,7 @@ public class ArtistService {
     }
 
     public Artist getArtist(long id){
-        return artistRepository.findById(id);
+        return artistRepository.findById(id).orElseThrow();
     }
 
     public void addArtist(Artist artist){

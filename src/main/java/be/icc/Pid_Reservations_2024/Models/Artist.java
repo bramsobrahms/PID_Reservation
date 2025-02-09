@@ -1,5 +1,6 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -30,7 +31,8 @@ public class Artist {
     private String firstname;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<ArtisteType> artisteTypes;
 
     // Constructor with params

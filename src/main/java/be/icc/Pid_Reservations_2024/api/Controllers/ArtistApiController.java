@@ -17,13 +17,14 @@ public class ArtistApiController {
     }
 
     @GetMapping("/artists")
+
     public List<Artist> allArtists() {
-        return artistRepository.findAll();
+        return (List<Artist>)artistRepository.findAll();
     }
 
     @GetMapping("/artist/{id}")
     public Artist anArtist(@PathVariable long id) {
-        return artistRepository.ApiFindById(id).orElseThrow( () -> new RuntimeException("Artist not found"));
+        return artistRepository.findById(id).orElseThrow( () -> new RuntimeException("Artist not found"));
     }
 
     @PostMapping("/admin/artist")
@@ -33,7 +34,7 @@ public class ArtistApiController {
 
     @PutMapping("/admin/artist/{id}")
     public Artist updateArtist(@RequestBody Artist updatedArtist, @PathVariable long id) {
-        return artistRepository.ApiFindById(id)
+        return artistRepository.findById(id)
                 .map(artist -> {
                     artist.setFirstname(updatedArtist.getFirstname());
                     artist.setLastname(updatedArtist.getLastname());
