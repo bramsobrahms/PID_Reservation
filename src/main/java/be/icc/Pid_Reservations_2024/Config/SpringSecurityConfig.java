@@ -39,12 +39,17 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain configure(final HttpSecurity http) throws Exception {
         return http.cors(Customizer.withDefaults())
-                .csrf(Customizer.withDefaults())
+                // Disable protect csrf
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/admin").hasRole("ADMIN");
                     auth.requestMatchers("/user").hasRole("MEMBER");
+                    // This is for API
+                    auth.requestMatchers("/api/public/***").permitAll(); // access for everyone
+                    auth.requestMatchers("/api/admin/***").hasRole("ADMIN"); // access only for Admin
                     auth.anyRequest().permitAll();
                 })
+                .httpBasic(Customizer.withDefaults()) // Allow basic authentication (useful for testing)
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("login")
