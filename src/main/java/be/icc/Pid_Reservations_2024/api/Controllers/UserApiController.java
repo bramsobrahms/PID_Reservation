@@ -94,4 +94,10 @@ public class UserApiController {
 
         return ResponseEntity.ok(changePasswordUser);
     }
+
+    @DeleteMapping("user/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable long id) {
+       userRepository.deleteById(id);
+       return ResponseEntity.noContent().build();
+    }
 }
