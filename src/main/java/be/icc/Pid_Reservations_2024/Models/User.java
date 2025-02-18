@@ -1,6 +1,8 @@
 package be.icc.Pid_Reservations_2024.Models;
 
 import be.icc.Pid_Reservations_2024.Enums.Roles;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -23,6 +25,7 @@ public class User {
     @Column(name = "login", unique = true, nullable = false, length = 30)
     private String login;
     @Column(name = "password", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @Column(name = "firstname", nullable = false, length = 60)
     private String firstName;
@@ -39,9 +42,11 @@ public class User {
 
     // Relation One To Many
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Reservation> reservations;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Review> reviews;
 
     // Constructor with params
