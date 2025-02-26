@@ -69,7 +69,6 @@ public class UserApiController {
                     user.setFirstName(updateUser.getFirstName());
                     user.setLogin(updateUser.getLogin());
                     user.setEmail(updateUser.getEmail());
-                    user.setPassword(passwordEncoder.encode(updateUser.getPassword()));
                     user.setRole(Roles.MEMBER);
                     user.setLanguage(updateUser.getLanguage());
                     return userRepository.save(user);

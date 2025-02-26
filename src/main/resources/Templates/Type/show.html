@@ -6,6 +6,9 @@
 </head>
 <body>
 <div class="container">
+
+  <div id="notification" th:replace="~{main :: notification}"></div>
+
   <div layout:fragment="content">
     <h1 th:text="${type.type}">Compositeur</h1>
 

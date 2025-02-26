@@ -36,9 +36,9 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>3.3.5</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>6.4.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -80,8 +80,13 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>3.3.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
 
-		<!-- Lombook -->
+
+		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -133,6 +138,10 @@
 			<groupId>org.springframework.hateoas</groupId>
 			<artifactId>spring-hateoas</artifactId>
 			<version>3.0.0-M1</version>
+		</dependency>
+		<dependency>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<groupId>org.springframework.boot</groupId>
 		</dependency>
 	</dependencies>
 

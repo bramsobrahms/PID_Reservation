@@ -36,13 +36,13 @@ public class Artist {
     private List<ArtisteType> artisteTypes;
 
     // Constructor with params
-    public Artist(String birthdate, String firstname, String lastname, Long id) {
+    public Artist(String firstname, String lastname, Long id) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.id = id;
     }
 
-    public Artist(String birthdate, String firstname, String lastname) {
+    public Artist(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }

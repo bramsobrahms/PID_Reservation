@@ -9,6 +9,10 @@
 </head>
 <body>
 <div class="container">
+
+    <div id="notification" th:replace="~{main :: notification}"></div>
+
+
     <div layout:fragment="content">
         <h1>New type</h1>
 
@@ -22,6 +26,9 @@
                 <button type="submit" th:text="Create">Create</button>
                 <a th:href="@{/types}">Cancel</a>
             </div>
+
+<!--            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+
         </form>
 
         <nav><a th:href="@{/types}">Back to the index</a></nav>
