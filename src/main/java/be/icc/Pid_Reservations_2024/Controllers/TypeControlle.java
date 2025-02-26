@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -40,20 +41,23 @@ public class TypeControlle {
 
     @GetMapping("/type/create")
     public String create(Model model) {
-        Type type = new Type(null);
 
-        model.addAttribute("addType", type);
+        if(!model.containsAttribute("type")) {
+            model.addAttribute("addType", new Type());
+        }
 
         return "Type/create";
     }
 
     @PostMapping("/type/create")
-    public String create(@Valid @ModelAttribute("addType") Type type, BindingResult bindingResult, Model model) {
+    public String create(@Valid @ModelAttribute("addType") Type type, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
+            model.addAttribute("errorMessage", "Failure of the type's creation!");
             return "Type/create";
         }
 
         typeService.createType(type);
+        redirectAttributes.addFlashAttribute("successMessage", "Type has been created!");
 
         return "redirect:/type/"+type.getId();
     }
@@ -77,7 +81,7 @@ public class TypeControlle {
     }
 
     @PutMapping("/type/{id}/edit")
-    public String update(@Valid @ModelAttribute("onetype") Type type, BindingResult bindingResult, @PathVariable("id") long id, Model model) {
+    public String update(@Valid @ModelAttribute("onetype") Type type, BindingResult bindingResult, @PathVariable("id") long id, Model model, RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
             return "Type/edit";
         }
@@ -90,15 +94,21 @@ public class TypeControlle {
 
         typeService.updateType(id, type);
 
+        redirectAttributes.addFlashAttribute("successMessage", "Type has been updated!");
+
         return "redirect:/type/"+type.getId();
     }
 
     @DeleteMapping("/type/{id}")
-    public String delete(@PathVariable("id") long id, Model model) {
-        Type type = typeService.getType(id);
+    public String delete(@PathVariable("id") long id, Model model, RedirectAttributes redirectAttributes) {
+        Type typeExisting = typeService.getType(id);
 
-        if(type != null) {
+        if(typeExisting != null) {
             typeService.deleteType(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Type has been deleted!");
+
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Failed to delete type!");
         }
 
         return "redirect:/types";

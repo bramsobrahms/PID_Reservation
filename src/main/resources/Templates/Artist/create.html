@@ -10,9 +10,10 @@
 <body>
 <div class="container">
     <div id="notification" th:replace="~{main :: notification}"></div>
-    <div layout:fragment="content">
-        <h1>New artist</h1>
 
+    <div layout:fragment="content">
+
+        <h1>New artist</h1>
         <form th:action="@{/artist/create}" th:object="${artist}" th:method="post">
             <div>
                 <label>Firstname:</label>
@@ -28,11 +29,11 @@
                 <button type="submit" th:text="Add">Add</button>
                 <a th:href="@{/artists}">Cancel</a>
             </div>
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+<!--            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
         </form>
 
-        <nav><a th:href="@{/artists}"> Back to the index</a></nav>
     </div>
+
 </div>
 </body>
 </html>
