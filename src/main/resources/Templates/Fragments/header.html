@@ -7,6 +7,7 @@
 </head>
 <body>
 <header class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#" th:href="@{/}">Réservations</a>
@@ -30,8 +31,16 @@
             <p sec:authorize="!isAuthenticated()"> You're not connected<br />
                 <a th:href="@{/login}" class="nav-link">Sign in</a>
             </p>
+
+            <div sec:authorize="isAuthenticated()">
+                <p>Bonjour <span sec:authentication="principal.username">Bob</span> !</p>
+                <form th:action="@{/logout}" method="post" class="nav-link">
+                    <button class="unset">Sign out</button>
+                </form>
+            </div>
         </div>
     </div>
+
 </header>
 </body>
 </html>
