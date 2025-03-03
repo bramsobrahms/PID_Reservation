@@ -4,6 +4,7 @@ import be.icc.Pid_Reservations_2024.Enums.Roles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,15 +24,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "login", unique = true, nullable = false, length = 30)
+    @NotEmpty(message = "The pseudo must no be empty")
     private String login;
     @Column(name = "password", nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotEmpty(message = "The password must no be empty")
     private String password;
     @Column(name = "firstname", nullable = false, length = 60)
+    @NotEmpty(message = "The firstname must no be empty")
     private String firstName;
     @Column(name = "lastname", nullable = false,  length = 60)
+    @NotEmpty(message = "The lastname must no be empty")
     private String lastName;
     @Column(name = "email", nullable = false)
+    @NotEmpty(message = "The email must no be empty")
     private String email;
     @Column(name = "language", length = 2)
     private String language;
