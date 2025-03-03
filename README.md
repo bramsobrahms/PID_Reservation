@@ -1,15 +1,13 @@
 # **PID_Reservation**
+It's a school project.<br />
+I created a complete project with a back-end and a front-end. 
 
-# *Itération 1 - Installation du framework*
+It's an application for booking shows.<br />
+An user can view all shows,...
 
-+ Installation du framework : **Springboot**
-+ Gestionnaires des dépendances : **Gradle**
-+ Environnement de développement intégré : **IntelliJ**
-+ Logiciel de versioning : **Github**
-+ Logiciel de projet : **project from Github**
+## Backend - Java - SpringBoot
 
-+ # *Itération 2 - Modèles*
 
-+ Ajouter les entités
-+ Ajouter les mappings relationnels
-+ Migrer la base de données
+## Frontend - Thymleaf -*
+
+
