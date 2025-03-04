@@ -43,6 +43,16 @@
                 </table>
             </div>
 
+            <div>
+                <a th:href="@{/user/{id}/edit(id=${user.id})}"><button>Edit</button></a>
+                <form th:id="|deleteForm-${user.id}|" th:action="@{/delete-user/{id}(id=${user.id})}" th:method="delete">
+                    <a href="#" th:onclick="|if(confirm('Confirm delete user #${user.id}')) document.getElementById('deleteForm-${user.id}').submit(); return false;|">
+                        <button>Delete</button>
+                    </a>
+                </form>
+
+            </div>
+
         </div>
     </div>
 

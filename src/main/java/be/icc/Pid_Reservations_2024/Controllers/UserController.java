@@ -81,22 +81,42 @@ public class UserController {
 
     @PutMapping("/user/{id}/edit")
     public String saveEditProfile(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, @PathVariable("id") long id, Model model, RedirectAttributes redirectAttributes) {
-        if(bindingResult.hasErrors()) {
-            return "User/edit";
-        }
-
         User userExisting = userService.getUser(id);
+
+//        if(bindingResult.hasErrors()) {
+//            bindingResult.getAllErrors().forEach(error -> {
+//                System.out.println(error.toString());
+//            });
+//            return "User/edit";
+//        }
 
         if(userExisting == null) {
             return "/";
         }
 
         user.setPassword(userExisting.getPassword());
-
+        user.setRole(userExisting.getRole());
+        user.setCreatedAt(userExisting.getCreatedAt());
         userService.updateUser(id, user);
 
         redirectAttributes.addFlashAttribute("successMessage", "Successfully updated!");
 
         return "redirect:/user/" + user.getId();
     }
+
+    @DeleteMapping("/delete-user/{id}")
+    public String deleteUser(@PathVariable("id") long id, RedirectAttributes redirectAttributes) {
+        User userExisting = userService.getUser(id);
+
+        if(userExisting != null) {
+            userService.deleteUser(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Successfully deleted!");
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Failed to delete!");
+        }
+
+        return "redirect:/";
+    }
+
+
 }
