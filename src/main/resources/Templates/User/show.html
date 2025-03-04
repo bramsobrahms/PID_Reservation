@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+        table{
+            border: 2px solid black;
+        }
+        td, th{
+            border: 1px dotted darkgrey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div layout:fragment="content">
+
+            <h1 th:text="|${user.firstName} ${user.lastName}|"> Name and fistname</h1>
+
+            <div>
+                <table>
+                    <tr>
+                        <th>Name: </th>
+                        <td th:text="${user.lastName}">name</td>
+                    </tr>
+                    <tr>
+                        <th>Firstname: </th>
+                        <td th:text="${user.firstName}">firstname</td>
+                    </tr>
+                    <tr>
+                        <th>Login: </th>
+                        <td th:text="${user.login}">Login</td>
+                    </tr>
+                    <tr>
+                        <th>Email: </th>
+                        <td th:text="${user.email}">Email</td>
+                    </tr>
+                    <tr>
+                        <th>Language: </th>
+                        <td th:text="${user.language}">Language</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
