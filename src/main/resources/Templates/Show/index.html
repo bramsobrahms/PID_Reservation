@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Shows</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div layout:fragment="content">
+            <h1 th:text="${thetitle}">List_of_Shows</h1>
+
+            <div th:each="show : ${shows}">
+                <h3 th:text="${show.title}">Title</h3>
+                <img th:src="@{${'/images/' + show.posterUrl}}" atl="picture">
+                <p>Durée du spectacle: <span th:text="${show.duration}"></span> minutes</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
