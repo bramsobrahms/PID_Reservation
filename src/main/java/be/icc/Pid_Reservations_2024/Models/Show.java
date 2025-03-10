@@ -33,7 +33,9 @@ public class Show {
     @Column(name = "isBookable", columnDefinition = "TINYINT")
     private Boolean isBookable;
 
+    // Methods
     // Relation One to Many
+    @Getter
     @OneToMany(mappedBy = "show")
     private List<Representation> representations;
 
@@ -46,7 +48,7 @@ public class Show {
     private Location location;
 
     // Relation Many To Many
-    @ManyToMany(mappedBy = "shows")
+    @ManyToMany(mappedBy = "shows", fetch = FetchType.EAGER)
     List<Price> prices;
 
     @ManyToMany(mappedBy = "shows")

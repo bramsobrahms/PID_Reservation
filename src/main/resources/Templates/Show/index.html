@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Shows</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .show {
+            border: 1px solid black;
+            width: 350px;
+            height: 300px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .show-container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .show-table {
+            border: 1px solid rebeccapurple;
+            text-align: left;
+            height: 300px;
+            width: 350px;
+        }
+
+        table {
+            border: 1px solid red;
+            height: 280px;
+            width: 350px;
+        }
+
+        table a {
+            text-decoration: none;
+        }
+
+        table tr {
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1 th:text="${thetitle}">List_of_Shows</h1>
+
+        <div th:each="show : ${shows}">
+            <div class="show-container">
+                <div class="show">
+                    <h3 th:text="${show.title}">Title</h3>
+                    <img th:src="@{${'/images/' + show.posterUrl}}" atl="picture">
+                </div>
+
+                <div class="show-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Salle :</th>
+                            <td th:text="${show.location.designation}">Nom du lieu</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse :</th>
+                            <td th:text="${show.location.address}">Nom de la rue</td>
+                        </tr>
+                        <tr>
+                            <th>Ville :</th>
+                            <td th:text="|${show.location.locality.postalCode} ${show.location.locality.locality}|">Nom
+                                de la rue
+                            </td>
+                        </tr>
+<!--                        <tr>-->
+<!--                            <th>Téléphone :</th>-->
+<!--                            <td th:text="${show.location.phone}">Num du tel</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Site internet :</th>-->
+<!--                            <td><a th:text="${show.location.designation}" th:href="${show.location.website}" target="_blank">Site du net</a></td>-->
+<!--                        </tr>-->
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <th>Nom auteur :</th>
+                            <td>noms, prenoms</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr th:each="schedule : ${showMapSchedules[show.id][0]}">
+                            <th>Date :</th>
+                            <td th:text="${schedule}">Date + Heure </td>
+                        </tr>
+                        <tr th:each="price : ${show.prices} ">
+                            <th>Prix :</th>
+                            <td th:text="'Type: ' + ${price.type} +' : ' + ${price.price} + ' €'">montant</td>
+                        </tr>
+                        <tr>
+                            <th>Durée :</th>
+                            <td><b><span th:text="${show.duration}"></span></b> minutes</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <button>Voir plus</button>
+                    <button>Réserver</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
