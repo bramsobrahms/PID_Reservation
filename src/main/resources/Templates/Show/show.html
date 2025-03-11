@@ -25,6 +25,34 @@
         <div>
             <img th:src="@{${'/images/' + show.posterUrl}}" th:alt="${show.title}" id="pictureShow">
         </div>
+
+        <div >
+             <p ></p>
+        </div>
+
+        <table th:each="representation: ${show.representations}">
+            <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Salle</th>
+                <th>Addresse</th>
+            </tr>
+
+            <tr>
+                <td th:text="${#temporals.format(representation.schedule, 'dd MMMM yy')}"></td>
+                <td th:text="${#temporals.format(representation.schedule, 'HH:mm')}"></td>
+                <td th:text="${representation.locations.designation}"></td>
+                <td th:utext="${representation.locations.address} + '<br/>' + ${representation.locations.locality.postalCode} +' ' + ${representation.locations.locality.locality} "></td>
+            </tr>
+        </table>
+
+        <div>
+            <ul th:each="price :${show.prices}">
+                <li th:text=" 'Catégorie: ' + ${price.price} + ' €' "></li>
+            </ul>
+        </div>
+
+
     </div>
 
 </body>
