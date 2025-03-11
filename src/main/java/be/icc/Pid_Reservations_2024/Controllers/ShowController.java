@@ -37,22 +37,8 @@ public class ShowController {
         // Get the shows for the current page
         Page<Show> showPage = showService.getAllShows(pageable);
 
-        Map<Long, List<String>> showMapSchedules = new HashMap<>(); // To store schedule each show
-
-        for (Show show : showPage.getContent()) {
-            Location location = show.getLocation();
-
-            // Get formatted schedule for the show
-            List<String> formattedSchedules = showService.getShowRepresentation(show, location);
-            showMapSchedules.put(show.getId(), formattedSchedules); // Add schedule to the Map
-
-            List<Price> prices = show.getPrices(); // Get the price for the show
-            show.setPrices(prices); // Add the price to Show
-        }
-
         // Add All necessary data to the model to be used in the view
         model.addAttribute("shows", showPage);
-        model.addAttribute("showMapSchedules", showMapSchedules);
         model.addAttribute("thetitle", "List of Shows");
 
         model.addAttribute("currentPage", page);

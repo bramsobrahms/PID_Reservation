@@ -113,15 +113,24 @@
                         </tbody>
                         <tfoot>
                         <!-- Loop to display Date for show -->
-                        <tr th:each="schedule : ${showMapSchedules[show.id][0]}">
-                            <th>Date :</th>
-                            <td th:text="${schedule}">Date + Heure</td>
+                        <tr th:if="${#lists.size(show.representations)==1}">
+                            <th>Représentation :</th>
+                            <td>1 fois</td>
+                        </tr>
+                        <tr th:if="${#lists.size(show.representations)>2}">
+                            <th>Représentation :</th>
+                            <td th:text="|${#lists.size(show.representations)} fois|">x fois</td>
                         </tr>
                         <!-- Loop to display price for show -->
-                        <tr th:each="price : ${show.prices} ">
+                        <tr th:if="${#lists.size(show.prices)==1}">
                             <th>Prix :</th>
-                            <td th:text="'Type: ' + ${price.type} +' : ' + ${price.price} + ' €'">montant</td>
+                            <td th:text="|${#lists.size(show.prices)} catégorie|">x catégorie</td>
                         </tr>
+                        <tr th:if="${#lists.size(show.prices)>=2}">
+                            <th>Prix :</th>
+                            <td th:text="|${#lists.size(show.prices)} catégories|">x catégories</td>
+                        </tr>
+                        <!-- Duration -->
                         <tr>
                             <th>Durée :</th>
                             <td><b><span th:text="${show.duration}"></span></b> minutes</td>
