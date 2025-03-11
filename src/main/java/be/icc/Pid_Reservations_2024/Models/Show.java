@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,8 +37,8 @@ public class Show {
     // Methods
     // Relation One to Many
     @Getter
-    @OneToMany(mappedBy = "show")
-    private List<Representation> representations;
+    @OneToMany( targetEntity = Representation.class, mappedBy = "show", fetch = FetchType.EAGER)
+    private List<Representation> representations = new ArrayList<>();
 
     @OneToMany(mappedBy = "show")
     private List<Review> reviews;
