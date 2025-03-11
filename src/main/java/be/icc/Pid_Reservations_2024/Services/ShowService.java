@@ -55,4 +55,8 @@ public class ShowService {
                 .collect(Collectors.toList()); // Regroups the formatted schedules into a list
     }
 
+    public Show getShow(long id) {
+        return showRepository.findById(id).orElse(null);
+    }
+
 }

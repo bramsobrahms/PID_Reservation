@@ -74,7 +74,7 @@
             <div class="show-container">
                 <div class="show">
                     <h3 th:text="${show.title}">Title</h3>
-                    <img th:src="@{${'/images/' + show.posterUrl}}" atl="picture">
+                    <img th:src="@{${'/images/' + show.posterUrl}}" th:alt="${show.title}">
                 </div>
 
                 <div class="show-table">
@@ -128,8 +128,9 @@
                         </tr>
                         </tfoot>
                     </table>
+
+                    <a type="button" th:href="@{/show/{id}(id=${show.id})}">Voir plus d'information</a>
                     <!-- TODO: Add buttons for show more information and book a show -->
-                    <button>Voir plus</button>
                     <button>Réserver</button>
                 </div>
 

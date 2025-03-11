@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
@@ -58,5 +59,15 @@ public class ShowController {
         model.addAttribute("totalPages", showPage.getTotalPages());
 
         return "Show/index";
+    }
+
+    @GetMapping("/show/{id}")
+    public String show(@PathVariable("id") long id, Model model) {
+        Show show = showService.getShow(id);
+
+        model.addAttribute("show", show);
+        model.addAttribute("TheTitle", "Details of the Show");
+
+        return "Show/show";
     }
 }
