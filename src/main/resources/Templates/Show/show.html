@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout" layout:decorate="~{layouts/main}">
 <head>
     <meta charset="UTF-8">
-    <title>Shows</title>
+    <title th:text="${TheTitle}">Shows</title>
+    <style>
+        /* Title of the show */
+        #title{
+            text-align: center;
+            font-style: italic;
+        }
+        /* Picture of the show */
+        #pictureShow{
+            width: 600px;
+            height: 450px;
+            display: block;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-    <h>List of Shows</h>
+    <div layout:fragment="content">
+        <h1 th:text="${show.title}" id="title">List of Shows</h1>
+
+        <div>
+            <img th:src="@{${'/images/' + show.posterUrl}}" th:alt="${show.title}" id="pictureShow">
+        </div>
+    </div>
+
 </body>
 </html>
