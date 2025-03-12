@@ -77,7 +77,7 @@ public class SpringSecurityConfig {
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/admin").hasRole("ADMIN");
-                    auth.requestMatchers("/user").hasRole("MEMBER");
+                    auth.requestMatchers("/user/**").hasRole("MEMBER");
                     auth.anyRequest().permitAll();
                 })
                 .formLogin(form -> form
