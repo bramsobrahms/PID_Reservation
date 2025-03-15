@@ -5,55 +5,73 @@
     <title th:text="${TheTitle}">Shows</title>
     <style>
         /* Title of the show */
-        #title{
+        #title {
             text-align: center;
             font-style: italic;
         }
+
         /* Picture of the show */
-        #pictureShow{
+        #pictureShow {
             width: 600px;
             height: 450px;
             display: block;
+            margin: auto auto 40px;
+        }
+
+        /* Table shows */
+        table {
             margin: auto;
+            width: 900px;
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div layout:fragment="content">
-        <h1 th:text="${show.title}" id="title">List of Shows</h1>
+<div layout:fragment="content">
+    <h1 th:text="${show.title}" id="title">List of Shows</h1>
 
-        <div>
-            <img th:src="@{${'/images/' + show.posterUrl}}" th:alt="${show.title}" id="pictureShow">
-        </div>
-
-        <div >
-             <p ></p>
-        </div>
-
-        <table th:each="representation: ${show.representations}">
-            <tr>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Salle</th>
-                <th>Addresse</th>
-            </tr>
-
-            <tr>
-                <td th:text="${#temporals.format(representation.schedule, 'dd MMMM yy')}"></td>
-                <td th:text="${#temporals.format(representation.schedule, 'HH:mm')}"></td>
-                <td th:text="${representation.locations.designation}"></td>
-                <td th:utext="${representation.locations.address} + '<br/>' + ${representation.locations.locality.postalCode} +' ' + ${representation.locations.locality.locality} "></td>
-            </tr>
-        </table>
-
-        <div>
-            <ul th:each="price :${show.prices}">
-                <li th:text=" 'Catégorie: ' + ${price.price} + ' €' "></li>
-            </ul>
-        </div>
-
-
+    <div>
+        <img th:src="@{${'/images/' + show.posterUrl}}" th:alt="${show.title}" id="pictureShow">
     </div>
+
+    <div>
+        <p></p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Salle</th>
+            <th>Addresse</th>
+            <th>Prix</th>
+            <th>Reservater</th>
+        </tr>
+
+        <tr th:each="representation: ${show.representations}">
+            <td th:text="${#temporals.format(representation.schedule, 'dd MMMM yy')}"></td>
+            <td th:text="${#temporals.format(representation.schedule, 'HH:mm')}"></td>
+            <td th:text="${representation.locations.designation}"></td>
+            <td th:utext="${representation.locations.address} + '<br/>' + ${representation.locations.locality.postalCode} +' ' + ${representation.locations.locality.locality} "></td>
+            <td>
+                <select>
+                    <option th:each="price : ${show.prices}"
+                            th:value="${price.id}"
+                            th:text="'Catégorie: ' + ${price.price} + ' €'"></option>
+                </select>
+            </td>
+            <td>
+                <button>Reserver</button>
+            </td>
+        </tr>
+    </table>
+    
+</div>
 
 </body>
 </html>
