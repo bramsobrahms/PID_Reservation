@@ -86,6 +86,7 @@ public class UserController {
 //        if(bindingResult.hasErrors()) {
 //            bindingResult.getAllErrors().forEach(error -> {
 //                System.out.println(error.toString());
+//                // faire ignorer le password pour pouvoir save dans la DB #TODO Chek this !
 //            });
 //            return "User/edit";
 //        }
