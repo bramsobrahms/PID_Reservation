@@ -1,8 +1,6 @@
 package be.icc.Pid_Reservations_2024.Controllers;
 
-import be.icc.Pid_Reservations_2024.Models.Location;
-import be.icc.Pid_Reservations_2024.Models.Price;
-import be.icc.Pid_Reservations_2024.Models.Show;
+import be.icc.Pid_Reservations_2024.Models.*;
 import be.icc.Pid_Reservations_2024.Services.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +50,21 @@ public class ShowController {
     public String show(@PathVariable("id") long id, Model model) {
         Show show = showService.getShow(id);
 
+        // Get artists by show and group by type
+        Map<String, ArrayList<Artist>> collaborators = new HashMap<>();
+
+        for(ArtisteType artisteType : show.getArtisteTypes()) {
+            String type = artisteType.getType().getType();
+
+            if(collaborators.get(type) == null) {
+                collaborators.put(type, new ArrayList<>());
+            }
+
+            collaborators.get(type).add(artisteType.getArtist());
+        }
+
         model.addAttribute("show", show);
+        model.addAttribute("collaborators", collaborators);
         model.addAttribute("TheTitle", "Details of the Show");
 
         return "Show/show";

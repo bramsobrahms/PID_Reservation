@@ -18,6 +18,13 @@
             margin: auto auto 40px;
         }
 
+        /* Text for place created show */
+        #placeCreated{
+            text-align: center;
+            font-style: italic;
+            text-decoration: underline;
+        }
+
         /* Table shows */
         table {
             margin: auto;
@@ -37,10 +44,7 @@
 
     <div>
         <img th:src="@{${'/images/' + show.posterUrl}}" th:alt="${show.title}" id="pictureShow">
-    </div>
-
-    <div>
-        <p></p>
+        <p th:if="${show.location}" id="placeCreated"><strong>Lieu de création:</strong> <span th:text="${show.location.designation}"></span></p>
     </div>
 
     <table>
@@ -70,6 +74,13 @@
             </td>
         </tr>
     </table>
+
+    <div>
+        <h4>Artistes:</h4>
+        <ul th:each="auteur : ${collaborators['Batteur']}">
+            <li th:text="| ${auteur.firstname} ${auteur.lastname}|"></li>
+        </ul>
+    </div>
     
 </div>
 

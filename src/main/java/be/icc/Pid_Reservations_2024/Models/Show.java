@@ -52,7 +52,7 @@ public class Show {
     @ManyToMany(mappedBy = "shows", fetch = FetchType.EAGER)
     List<Price> prices;
 
-    @ManyToMany(mappedBy = "shows")
+    @ManyToMany(mappedBy = "shows", fetch = FetchType.EAGER)
     List<ArtisteType> artisteTypes;
 
     // Constructor with params
