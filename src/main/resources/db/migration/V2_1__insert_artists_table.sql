@@ -1,12 +1,34 @@
-INSERT INTO `artists` (`firstname`, `lastname`)
+INSERT INTO `artists` (`lastname`, `firstname`)
 VALUES
-    ('Sting', 'Sumner'),  -- Musicien
-    ('Emma', 'Watson'),  -- Comédienne
-    ('Sasha', 'Waltz'),  -- Chorégraphe
-    ('David', 'Copperfield'),  -- Magicien
-    ('Ariana', 'Grande'),  -- Chanteuse
-    ('Quentin', 'Tarantino'),  -- Cinéaste
-    ('Banksy', ''),  -- Artiste visuel
-    ('Misty', 'Copeland'),  -- Danseuse
-    ('Lorde', ''),  -- Compositrice / Chanteuse
-    ('Gad', 'Elmaleh');  -- Humoriste
+    ('Dupont', 'Claire'),
+    ('Lefevre', 'Marc'),
+    ('Valois', 'Sophie'),
+    ('Lefevre', 'Thomas'),
+    ('Moreau', 'Sylvain'),
+    ('Dufresne', 'Isabelle'),
+    ('Durant', 'Lucie'),
+    ('Martin', 'Élodie'),
+    ('Bernard', 'Julien'),
+    ('Lemoine', 'Camille'),
+    ('Simard', 'Laura'),
+    ('Vidal', 'Sophie'),
+    ('Caron', 'Thomas'),
+    ('Giraud', 'Cédric'),
+    ('Lefevre', 'Lucie'),
+    ('Garcia','Antoine'),
+    ('Broussard', 'Julien'),
+    ('Perrin', 'Hugo'),
+    ('Lemoine', 'Claire'),
+    ('Joly', 'Nathalie'),
+    ('Leblanc', 'Zoé'),
+    ('Girard', 'Philippe'),
+    ('Lefevre', 'Claire'),
+    ('Denis', 'Hugo'),
+    ('Morel', 'Anne'),
+    ('Laurent', 'Éric'),
+    ('Smet', 'Patrick'),
+    ('Caron', 'Michel'),
+    ('Dumont', 'Sarah'),
+    ('Deschamps', 'Gabriel'),
+    ('Fonaine', 'Léonard'),
+    ('Roussel', 'Camille');

@@ -1,12 +1,55 @@
 INSERT INTO `artiste_types` (`artist_id`, `type_id`)
 VALUES
-    (1, 1),  -- Sting (musicien) dans "Sting en Concert à Paris"
-    (2, 2),  -- Emma Watson (comédienne) dans “La Belle et la Bête”
-    (3, 3),  -- Sasha Waltz (chorégraphe) dans "Sasha Waltz - Danse Contemporaine"
-    (4, 4),  -- David Copperfield (magicien) dans "David Copperfield - Magie Illusionniste"
-    (5, 5),  -- Ariana Grande (chanteuse) dans "Ariana Grande en Concert à Nice"
-    (6, 6),  -- Quentin Tarantino (cinéaste) dans "Quentin Tarantino présente ses Films à Paris"
-    (7, 7),  -- Banksy (artiste visuel) dans "Banksy – Art Contemporain"
-    (8, 8),  -- Misty Copeland (danseuse) dans "Misty Copeland – Ballet Classique"
-    (9, 9),  -- Lorde (compositrice/chanteuse) dans "Lorde en Concert à Toulouse"
-    (10, 10);  -- Gad Elmaleh (humoriste) dans "Gad Elmaleh – Humoriste à Nantes"
+    (1,1),
+    (2,2),
+    (3,3),
+    (4,4),
+    (8,5),
+    (6,7),
+    (6,27),
+    (2,6),
+    (7,8),
+    (8,9),
+    (8,1),
+    (9,2),
+    (10,13),
+    (10,15),
+    (11,14),
+    (12,15),
+    (12,12),
+    (13,6),
+    (13,27),
+    (14,16),
+    (1,17),
+    (15,2),
+    (16,18),
+    (16,4),
+    (2,2),
+    (2,18),
+    (17,19),
+    (18,20),
+    (19,1),
+    (19,21),
+    (2,22),
+    (20,23),
+    (21,1),
+    (21,7),
+    (22,24),
+    (22,25),
+    (23,26),
+    (25,27),
+    (25,1),
+    (26,18),
+    (26,4),
+    (23,28),
+    (27,29),
+    (28,10),
+    (28,30),
+    (29,1),
+    (2,25),
+    (2,31),
+    (30,32),
+    (31,18),
+    (31,24),
+    (4,31),
+    (20,33);
