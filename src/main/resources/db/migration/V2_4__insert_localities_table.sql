@@ -1,12 +1,16 @@
 INSERT INTO `localities` (`postal_code`, `locality`)
 VALUES
     ('75001', 'Paris'),
-    ('75016', 'Paris'),
-    ('69002', 'Lyon'),
-    ('33000', 'Bordeaux'),
-    ('06000', 'Nice'),
-    ('75018', 'Paris'),
-    ('75012', 'Paris'),
-    ('13001', 'Marseille'),
-    ('31000', 'Toulouse'),
-    ('44000', 'Nantes');
+    ('75004', 'Paris'),
+    ('SW1W 8AS', 'Londres'),
+    ('QC H2X 3L2', 'Montréal'),
+    ('93300 ', 'Aubervilliers'),
+    ('1000', 'Bruxelles'),
+    ('1180','Uclle'),
+    ('1150', 'Woluwe-Saint-Pierre'),
+    ('4000', 'Liège'),
+    ('7000','Mons'),
+    ('5000', 'Namur'),
+    ('L-2226', 'Luxembourg'),
+    ('L-1313', 'Luxembourg'),
+    ('75008', 'Paris');

@@ -43,10 +43,8 @@ ALTER TABLE price_shows
 
 -- Add Constraints for Locations
 ALTER TABLE locations
-    ADD CONSTRAINT locations_localities UNIQUE (locality_id);
-
-ALTER TABLE locations
-    ADD CONSTRAINT locations_id UNIQUE (id);
+    ADD CONSTRAINT locations_localities FOREIGN KEY (locality_id)
+        REFERENCES locations (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- Add Constraints for Artiste_Types
 ALTER TABLE artiste_types

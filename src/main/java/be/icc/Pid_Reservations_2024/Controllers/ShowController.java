@@ -1,8 +1,6 @@
 package be.icc.Pid_Reservations_2024.Controllers;
 
-import be.icc.Pid_Reservations_2024.Models.Location;
-import be.icc.Pid_Reservations_2024.Models.Price;
-import be.icc.Pid_Reservations_2024.Models.Show;
+import be.icc.Pid_Reservations_2024.Models.*;
 import be.icc.Pid_Reservations_2024.Services.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,22 +36,8 @@ public class ShowController {
         // Get the shows for the current page
         Page<Show> showPage = showService.getAllShows(pageable);
 
-        Map<Long, List<String>> showMapSchedules = new HashMap<>(); // To store schedule each show
-
-        for (Show show : showPage.getContent()) {
-            Location location = show.getLocation();
-
-            // Get formatted schedule for the show
-            List<String> formattedSchedules = showService.getShowRepresentation(show, location);
-            showMapSchedules.put(show.getId(), formattedSchedules); // Add schedule to the Map
-
-            List<Price> prices = show.getPrices(); // Get the price for the show
-            show.setPrices(prices); // Add the price to Show
-        }
-
         // Add All necessary data to the model to be used in the view
         model.addAttribute("shows", showPage);
-        model.addAttribute("showMapSchedules", showMapSchedules);
         model.addAttribute("thetitle", "List of Shows");
 
         model.addAttribute("currentPage", page);
@@ -65,7 +50,21 @@ public class ShowController {
     public String show(@PathVariable("id") long id, Model model) {
         Show show = showService.getShow(id);
 
+        // Get artists by show and group by type
+        Map<String, ArrayList<Artist>> collaborators = new HashMap<>();
+
+        for(ArtisteType artisteType : show.getArtisteTypes()) {
+            String type = artisteType.getType().getType();
+
+            if(collaborators.get(type) == null) {
+                collaborators.put(type, new ArrayList<>());
+            }
+
+            collaborators.get(type).add(artisteType.getArtist());
+        }
+
         model.addAttribute("show", show);
+        model.addAttribute("collaborators", collaborators);
         model.addAttribute("TheTitle", "Details of the Show");
 
         return "Show/show";

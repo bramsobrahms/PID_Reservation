@@ -1,12 +1,12 @@
-INSERT INTO `shows` (`location_id`, `is_bookable`, `duration`, `slug`, `title`, `poster_url`)
+INSERT INTO `shows` (`location_id`, `is_bookable`, `duration`, `slug`, `title`, `poster_url`, `created_in`)
 VALUES
-    (1, 1, 120, 'sting-concert-paris', 'Sting en Concert à Paris', 'stingaparis.jpg'),
-    (2, 1, 150, 'emma-watson-play-paris', 'Emma Watson dans “La Belle et la Bête”', 'emmawatsonsdanslabelleetlabete.jpg'),
-    (3, 1, 180, 'sasha-waltz-dance-lyon', 'Sasha Waltz - Danse Contemporaine', 'sashawaltz.jpg'),
-    (4, 1, 130, 'david-copperfield-magic-bordeaux', 'David Copperfield - Magie Illusionniste', 'davidcopperfield.jpg'),
-    (5, 1, 90, 'ariana-grande-concert-nice', 'Ariana Grande en Concert à Nice', 'arianagrande.jpg'),
-    (6, 1, 120, 'quentin-tarantino-cinema-paris', 'Quentin Tarantino présente ses Films à Paris', 'quentintarantino.jpg'),
-    (7, 1, 100, 'banksy-exposition-paris', 'Banksy – Art Contemporain', 'banksy.jpg'),
-    (8, 1, 150, 'misty-copeland-ballet-marseille', 'Misty Copeland – Ballet Classique', 'mistycopeland.jpg'),
-    (9, 1, 120, 'lorde-concert-toulouse', 'Lorde en Concert à Toulouse', 'lorde.jpg'),
-    (10, 1, 120, 'gad-elmaleh-comedie-nantes', 'Gad Elmaleh – Humoriste à Nantes', 'gadelmaleh.jpg');
+    (1, 1, 90, 'sous-les-etoiles-de-la-nuit', 'Sous les étoiles de la nuit', 'souslesetoilesdelanuit.jpg','2023-01-01'),
+    (1, 1, 120, 'le-bal-des-ombres', 'Le Bal des Ombres', 'lebaldesombres.jpg','2022-01-01'),
+    (2, 1, 105, 'voyage-au-coeur-des-emotions', 'Voyage au cœur des émotions', 'voyageaucoeurdesemotions.jpg','2021-01-01'),
+    (2, 1, 80, 'les-miserables', 'Les misérables', 'lesmiserable.jpg','2020-01-01'),
+    (3, 1, 135, 'eclats-d-ame', 'Éclats d''âme', 'eclatsame.jpg','2024-01-01'),
+    (3, 1, 70, 'la-magie-du-temps', 'La Magie du Temps', 'magiedutemps.jpg','2019-01-01'),
+    (4, 1, 110, 'reves-et-realites', 'Rêves et Réalités', 'revesrealites.jpg','2023-01-01'),
+    (4, 1, 90, '	les-voix-du-silence', 'Les Voix du Silence', 'voixdusilence.jpg','2022-01-01'),
+    (5, 1, 120, 'l-odyssee-des-mots', 'L''Odyssée des Mots', 'odysseemots.jpg','2021-01-01'),
+    (5, 1, 130, 'au-dela-des-apparences', 'Au-delà des Apparences', 'audeladesapparences.jpg','2024-01-01');

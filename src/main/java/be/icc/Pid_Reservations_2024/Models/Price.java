@@ -33,7 +33,7 @@ public class Price {
     private List<RepresentationReservation> representation_reservations;
 
     // Relation Many to Many
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "price_shows",
             joinColumns = @JoinColumn(name = "price_id"),
