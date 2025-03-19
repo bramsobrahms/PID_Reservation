@@ -54,7 +54,7 @@
             <th>Salle</th>
             <th>Addresse</th>
             <th>Prix</th>
-            <th>Reservater</th>
+            <th>Reserver</th>
         </tr>
 
         <tr th:each="representation: ${show.representations}">
@@ -66,7 +66,7 @@
                 <select>
                     <option th:each="price : ${show.prices}"
                             th:value="${price.id}"
-                            th:text="'Catégorie: ' + ${price.price} + ' €'"></option>
+                            th:text=" ${price.type} +': ' + ${price.price} + ' €'"></option>
                 </select>
             </td>
             <td>
@@ -76,10 +76,12 @@
     </table>
 
     <div>
-        <h4>Artistes:</h4>
-        <ul th:each="auteur : ${collaborators['Batteur']}">
-            <li th:text="| ${auteur.firstname} ${auteur.lastname}|"></li>
-        </ul>
+        <div th:each="entry : ${collaborators}">
+            <h5 th:text="${entry.key}">Métiers</h5> <!-- Affiche le métier -->
+            <ul>
+                <li th:each="auteur : ${entry.value}" th:text="|${auteur.lastname} ${auteur.firstname}|"></li> <!-- Affiche le nom et prénom -->
+            </ul>
+        </div>
     </div>
     
 </div>
