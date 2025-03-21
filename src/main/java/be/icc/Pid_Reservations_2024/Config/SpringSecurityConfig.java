@@ -78,7 +78,6 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/admin").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasRole("MEMBER");
-                    auth.requestMatchers("/reservation/**").hasRole("ADMIN");
                     auth.requestMatchers("/reservation/**").hasAnyRole("ADMIN", "MEMBER");
                     auth.anyRequest().permitAll();
                 })
