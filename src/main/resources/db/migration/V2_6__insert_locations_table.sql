@@ -6,7 +6,7 @@ VALUES
     (4, '+1 514-866-8668', 'Le Théâtre du Nouveau Monde', 'theatre-du-nouveau-monde', '84 Rue Saint-Denis', 'https://www.tnm.qc.ca'),
     (5, '+33 1 48 39 88 44', 'La Maison des Auteurs', 'maison-des-auteurs', '19 Rue Hélène', 'https://www.maison-des-auteurs.com'),
     (6, '+32 2 229 12 11', 'La Monnaie', 'la-monnaie-de-munt', 'Rue Fossé-aux-Loups 23', 'https://www.lamonnaie.be'),
-    (6, '+32 2 508 09 10', 'Le Théâtre Royal du Parc', 'theatre-royal-du-parc', ' Rue de la Loi 3', 'https://www.theatredelaparc.be'),
+    (6, '+32 2 508 09 10', 'Le Théâtre Royal du Parc', 'theatre-royal-du-parc', ' Rue de la Loi 3', 'https://www.theatreduparc.be/'),
     (9, '+32 4 223 23 50', 'Le Théâtre de la Place', 'theatre-de-la-place', '3 Rue des Dominicains', 'https://www.theatredelaplace.be'),
     (6, '+32 2 210 11 11', 'Le KVS (Koninklijke Vlaamse Schouwburg)', ' kvs-koninklijke-vlaamse-schouwburg', '4 Arduinkaai', 'https://www.kvs.be/'),
     (6, '+32 2 512 22 00', 'La Bellone', 'la-bellone', '46 Rue de Flandre', 'https://www.bellone.be'),
