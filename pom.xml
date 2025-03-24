@@ -129,7 +129,7 @@
 		<dependency>
 			<groupId>com.github.slugify</groupId>
 			<artifactId>slugify</artifactId>
-			<version>3.0.7</version>f
+			<version>3.0.7</version>
 		</dependency>
 
 		<!-- Hateoas -->
@@ -141,6 +141,13 @@
 		<dependency>
 			<artifactId>spring-boot-starter-security</artifactId>
 			<groupId>org.springframework.boot</groupId>
+		</dependency>
+
+		<!-- Stripe -->
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>28.4.0</version>
 		</dependency>
 	</dependencies>
 
