@@ -1,11 +1,16 @@
 package be.icc.Pid_Reservations_2024.Controllers;
 
+import be.icc.Pid_Reservations_2024.Models.Reservation;
+import be.icc.Pid_Reservations_2024.Services.ReservationService;
+import be.icc.Pid_Reservations_2024.Services.UserService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,14 +19,23 @@ import java.util.Map;
 @CrossOrigin("http://localhost:63342/")
 public class PaymentController {
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    ReservationService reservationService;
+
+
     @PostMapping("/create-checkout-session")
-    public RedirectView createCheckoutSession() throws StripeException {
+    public RedirectView createCheckoutSession(@RequestParam String pictureShow, @RequestParam String nameShow, @RequestParam String dateShow, @RequestParam("priceShow") String priceShow, @RequestParam("quantityShow") String quantityShow) throws StripeException {
 
-        String nomShow = "Delta Force";
-        long qty = 1;
-        long price = (long) 10.00;
-        String date = "Le 15 septembre 2025 à 20:35";
+        // Convert price show from String to long
+        double priceDouble = Double.parseDouble(priceShow);
+        long price = (long) priceDouble;
 
+        // Convert quantity place for a show from String to long
+        double quantityDouble = Double.parseDouble(quantityShow);
+        long quantity = (long) quantityDouble;
 
         SessionCreateParams params = SessionCreateParams.builder()
                 .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
@@ -37,12 +51,12 @@ public class PaymentController {
                                                 .setProductData(
                                                         SessionCreateParams.LineItem.PriceData.ProductData.builder()
                                                                 .addImage("http://bobleponge.fr/photos/humour-bob-eponge/Linux-patrick.jpg")
-                                                                .setName(nomShow)
-                                                                .setDescription("Date et Heure: " + date)
+                                                                .setName(nameShow)
+                                                                .setDescription("Le " + dateShow)
                                                                 .build()
                                                 )
                                                 .build()
-                                ).setQuantity(qty)
+                                ).setQuantity(quantity)
                                 .build()
                 ).build();
 
@@ -58,11 +72,21 @@ public class PaymentController {
 
     @GetMapping("/success")
     public String success() {
+        Reservation reservation = new Reservation();
+        reservation.setBookingDate(LocalDateTime.now());
+        reservation.setStatus("Confirmée");
+        reservation.setUser(userService.getUser(1));
+        reservationService.save(reservation);
         return "payment successful";
     }
 
     @GetMapping("/cancel")
     public String cancel() {
+        Reservation reservation = new Reservation();
+        reservation.setBookingDate(LocalDateTime.now());
+        reservation.setStatus("Annulée");
+        reservation.setUser(userService.getUser(1));
+        reservationService.save(reservation);
         return "payment cancelled";
     }
 }
