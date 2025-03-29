@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reservation</title>
+    <script src="https://js.stripe.com/v3/"></script>
     <style>
         /* Table display the show */
         table {
@@ -96,7 +97,9 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <button>Payer</button>
+                    <form th:action="@{/create-checkout-session}" method="post">
+                        <button id="checkout-button">Réserver</button>
+                    </form>
                 </td>
             </tr>
         </table>
