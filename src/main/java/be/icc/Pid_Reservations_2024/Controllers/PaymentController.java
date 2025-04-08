@@ -1,12 +1,16 @@
 package be.icc.Pid_Reservations_2024.Controllers;
 
 import be.icc.Pid_Reservations_2024.Models.Reservation;
+import be.icc.Pid_Reservations_2024.Models.User;
+import be.icc.Pid_Reservations_2024.Repositories.UserRepository;
 import be.icc.Pid_Reservations_2024.Services.ReservationService;
 import be.icc.Pid_Reservations_2024.Services.UserService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -24,6 +28,8 @@ public class PaymentController {
 
     @Autowired
     ReservationService reservationService;
+    @Autowired
+    private UserRepository userRepository;
 
 
     @PostMapping("/create-checkout-session")
@@ -72,10 +78,16 @@ public class PaymentController {
 
     @GetMapping("/success")
     public String success() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        User user = userRepository.findByLogin(username);
+
         Reservation reservation = new Reservation();
         reservation.setBookingDate(LocalDateTime.now());
         reservation.setStatus("Confirmée");
-        reservation.setUser(userService.getUser(1));
+        reservation.setUser(user);
         reservationService.save(reservation);
         return "payment successful";
     }
