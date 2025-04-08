@@ -11,6 +11,7 @@ import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
+@Controller
 @RequestMapping
 @CrossOrigin("http://localhost:63342/")
 public class PaymentController {
@@ -76,6 +77,15 @@ public class PaymentController {
         return new RedirectView(url);
     }
 
+    /**
+     * This method handles when a payment is successful and creates a reservation for the logged-in user.
+     *
+     * The method is mapped to the "/success" URL. It gets the current user's information, creates a new
+     * reservation with a "Confirmed" status, and saves it in the database.
+     *
+     * @return A message saying "payment successful" after the reservation is saved.
+     *
+     */
     @GetMapping("/success")
     public String success() {
 
@@ -89,7 +99,7 @@ public class PaymentController {
         reservation.setStatus("Confirmée");
         reservation.setUser(userID);
         reservationService.save(reservation);
-        return "payment successful";
+        return "payment/success";
     }
 
     @GetMapping("/cancel")
@@ -104,6 +114,6 @@ public class PaymentController {
         reservation.setStatus("Annulée");
         reservation.setUser(userID);
         reservationService.save(reservation);
-        return "payment cancelled";
+        return "Payment/cancel";
     }
 }
