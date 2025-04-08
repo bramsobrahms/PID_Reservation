@@ -82,22 +82,27 @@ public class PaymentController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
-        User user = userRepository.findByLogin(username);
+        User userID = userRepository.findByLogin(username);
 
         Reservation reservation = new Reservation();
         reservation.setBookingDate(LocalDateTime.now());
         reservation.setStatus("Confirmée");
-        reservation.setUser(user);
+        reservation.setUser(userID);
         reservationService.save(reservation);
         return "payment successful";
     }
 
     @GetMapping("/cancel")
     public String cancel() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        User userID = userRepository.findByLogin(username);
+
         Reservation reservation = new Reservation();
         reservation.setBookingDate(LocalDateTime.now());
         reservation.setStatus("Annulée");
-        reservation.setUser(userService.getUser(1));
+        reservation.setUser(userID);
         reservationService.save(reservation);
         return "payment cancelled";
     }
