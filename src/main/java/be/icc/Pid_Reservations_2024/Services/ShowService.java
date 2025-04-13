@@ -16,9 +16,6 @@ public class ShowService {
     @Autowired
     private ShowRepository showRepository;
 
-    @Autowired
-    private RepresentationRepository representationRepository;
-
     /**
      * Gets a list of shows in pages.
      * <p>
@@ -30,6 +27,10 @@ public class ShowService {
      */
     public Page<Show> getAllShows(Pageable pageable) {
         return showRepository.findAll(pageable);
+    }
+
+    public List<Show> getAllShows() {
+        return showRepository.findAll();
     }
 
 
