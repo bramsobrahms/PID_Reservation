@@ -1,7 +1,7 @@
 package be.icc.Pid_Reservations_2024.Services;
 
 import be.icc.Pid_Reservations_2024.Models.Representation;
-import be.icc.Pid_Reservations_2024.Repositories.RepresentationsRepository;
+import be.icc.Pid_Reservations_2024.Repositories.RepresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 public class RepresentationsService {
 
     @Autowired
-    RepresentationsRepository representationsRepository;
+    RepresentationRepository representationRepository;
 
     public Representation getRepresentation(long id){
-        return representationsRepository.findById(id).orElse(null);
+        return representationRepository.findById(id).orElse(null);
     }
 
 }
