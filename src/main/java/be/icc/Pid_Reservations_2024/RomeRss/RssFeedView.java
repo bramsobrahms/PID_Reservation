@@ -1,12 +1,13 @@
 package be.icc.Pid_Reservations_2024.RomeRss;
 
+import be.icc.Pid_Reservations_2024.Models.Representation;
 import be.icc.Pid_Reservations_2024.Models.Show;
 import be.icc.Pid_Reservations_2024.Services.ShowService;
-import com.rometools.rome.feed.rss.Channel;
-import com.rometools.rome.feed.rss.Description;
-import com.rometools.rome.feed.rss.Item;
+import com.rometools.rome.feed.rss.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.jdom2.Comment;
+import org.jdom2.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
@@ -34,8 +35,7 @@ public class RssFeedView extends AbstractRssFeedView {
 
         for (Show show : shows) {
 
-            Description description = new Description();
-            description.setValue("Le spectacle dure " + show.getDuration() + " minutes");
+            String duration = "Le spectacle dure " + show.getDuration() + " minutes";
 
             Date create_in = show.getCreated_in();
             Calendar calendar = Calendar.getInstance();
@@ -43,13 +43,14 @@ public class RssFeedView extends AbstractRssFeedView {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             create_in = calendar.getTime();
 
-
+            Description images = new Description();
 
             Item item = new Item();
             item.setTitle(show.getTitle());
             item.setAuthor(show.getLocation().getDesignation());
-            item.setDescription(description);
+            item.setComments(duration);
             item.setPubDate(create_in);
+            item.setDescription(images);
             item.setLink("http://localhost:8080/show/" + show.getId());
 
             // Image
@@ -60,7 +61,7 @@ public class RssFeedView extends AbstractRssFeedView {
 
             String imageHtml = "<img src=\"" + showImageUrl + "\" alt=\"" + show.getTitle() + "\" width=\"50\" height=\"50\" />";
 
-            description.setValue(description.getValue() + " " + imageHtml);
+            images.setValue(images.getValue() + " " + imageHtml);
 
             feed.add(item);
         }
