@@ -57,7 +57,7 @@ public class PaymentController {
                                                 .setUnitAmount(price * 100)
                                                 .setProductData(
                                                         SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                                                                .addImage("http://bobleponge.fr/photos/humour-bob-eponge/Linux-patrick.jpg")
+                                                                .addImage(pictureShow)
                                                                 .setName(nameShow)
                                                                 .setDescription("Le " + dateShow)
                                                                 .build()
