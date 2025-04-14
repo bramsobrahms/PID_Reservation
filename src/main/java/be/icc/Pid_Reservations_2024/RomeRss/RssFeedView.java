@@ -4,14 +4,21 @@ import be.icc.Pid_Reservations_2024.Models.Representation;
 import be.icc.Pid_Reservations_2024.Models.Show;
 import be.icc.Pid_Reservations_2024.Services.ShowService;
 import com.rometools.rome.feed.rss.*;
+import com.rometools.rome.feed.synd.SyndContent;
+import com.rometools.rome.feed.synd.SyndContentImpl;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndEntryImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.jdom2.Comment;
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Component
@@ -47,7 +54,6 @@ public class RssFeedView extends AbstractRssFeedView {
 
             Item item = new Item();
             item.setTitle(show.getTitle());
-            item.setAuthor(show.getLocation().getDesignation());
             item.setComments(duration);
             item.setPubDate(create_in);
             item.setDescription(images);
@@ -55,7 +61,7 @@ public class RssFeedView extends AbstractRssFeedView {
 
             // Image
             String showImageUrl = show.getPosterUrl();
-            if(showImageUrl == null || showImageUrl.isEmpty()) {
+            if (showImageUrl == null || showImageUrl.isEmpty()) {
                 showImageUrl = "https://cdn.futura-sciences.com/cdn-cgi/image/width=1920,quality=50,format=auto/sources/images/dossier/773/01-intro-773.jpg";
             }
 
@@ -63,6 +69,22 @@ public class RssFeedView extends AbstractRssFeedView {
 
             images.setValue(images.getValue() + " " + imageHtml);
 
+            List<Element> foreignKeys = new ArrayList<>();
+
+            for (Representation representation : show.getRepresentations()) {
+
+                Element dateRepresentation = new Element("DateDeRepresentation", Namespace.NO_NAMESPACE);
+                dateRepresentation.setText(representation.getSchedule().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+
+                Element salle = new Element("Salle", Namespace.NO_NAMESPACE);
+                salle.setText(representation.getLocations().getDesignation());
+
+                foreignKeys.add(salle);
+                foreignKeys.add(dateRepresentation);
+
+            }
+
+            item.setForeignMarkup(foreignKeys);
             feed.add(item);
         }
 
