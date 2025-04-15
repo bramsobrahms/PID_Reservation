@@ -68,7 +68,6 @@ public class RssFeedView extends AbstractRssFeedView {
             Date create_in = show.getCreated_in();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(create_in);
-            calendar.add(Calendar.DAY_OF_MONTH, 1);
             create_in = calendar.getTime();
 
             // Description part (can include HTML)
@@ -77,6 +76,7 @@ public class RssFeedView extends AbstractRssFeedView {
             Item item = new Item();
             item.setTitle(show.getTitle());
             item.setComments(duration);
+            item.setAuthor(show.getLocation().getDesignation());
             item.setPubDate(create_in);
             item.setDescription(images);
             item.setLink("http://localhost:8080/show/" + show.getId());
@@ -109,6 +109,8 @@ public class RssFeedView extends AbstractRssFeedView {
                 foreignKeys.add(salle);
                 foreignKeys.add(dateRepresentation);
 
+//                item.setForeignMarkup(foreignKeys);
+//                feed.add(item);
             }
 
             // Set the custom XML elements to the RSS item
