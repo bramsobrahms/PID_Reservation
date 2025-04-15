@@ -89,7 +89,7 @@ public class RssFeedView extends AbstractRssFeedView {
 
             String imageHtml = "<img src=\"" + showImageUrl + "\" alt=\"" + show.getTitle() + "\" width=\"50\" height=\"50\" />";
 
-            images.setValue(images.getValue() + " " + imageHtml);
+            images.setValue(imageHtml);
 
 
             // Create foreign markup (custom XML elements)
