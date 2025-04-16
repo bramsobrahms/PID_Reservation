@@ -5,6 +5,8 @@ import be.icc.Pid_Reservations_2024.Repositories.RepresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RepresentationsService {
 
@@ -13,6 +15,10 @@ public class RepresentationsService {
 
     public Representation getRepresentation(long id){
         return representationRepository.findById(id).orElse(null);
+    }
+
+    public List<Representation> getAllRepresentations(){
+        return representationRepository.findAll();
     }
 
 }

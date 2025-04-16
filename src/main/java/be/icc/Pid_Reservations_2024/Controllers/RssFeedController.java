@@ -10,12 +10,12 @@ import org.springframework.web.servlet.View;
 @RestController
 public class RssFeedController {
 
-    @Autowired
-    private RssFeedView view;
-
-    @GetMapping("/rss")
-    public View getRssFeed() {
-        return view;
-    }
+//    @Autowired
+//    private RssFeedView view;
+//
+//    @GetMapping("/rss")
+//    public View getRssFeed() {
+//        return view;
+//    }
 
 }
