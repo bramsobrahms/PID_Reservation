@@ -64,7 +64,7 @@ public class FeedRssController {
             for (Representation r : show.getRepresentations()) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
                 String schedule = r.getSchedule().format(formatter);
-                String designation = r.getShow().getLocation().getDesignation().trim();
+                String designation = r.getLocations().getDesignation().trim();
                 descriptionText.append("Le ").append(schedule)
                         .append(" à ").append(designation)
                         .append("\n");
