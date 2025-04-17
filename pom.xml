@@ -108,12 +108,12 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>10.22.0</version>
+            <version>11.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
-            <version>10.22.0</version>
+            <version>11.7.1</version>
         </dependency>
 
         <!-- JUnit 5 -->
