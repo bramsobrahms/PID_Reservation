@@ -23,7 +23,7 @@ public class Representation {
     private LocalDateTime schedule;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "representation")
+    @OneToMany(mappedBy = "representation", fetch = FetchType.EAGER)
     private List<RepresentationReservation> representation_reservations;
 
     // Relation Many to One

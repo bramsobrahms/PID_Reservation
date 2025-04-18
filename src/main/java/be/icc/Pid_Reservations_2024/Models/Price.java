@@ -29,11 +29,11 @@ public class Price {
     private LocalDate end_date;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "price")
+    @OneToMany(mappedBy = "price", fetch = FetchType.EAGER)
     private List<RepresentationReservation> representation_reservations;
 
     // Relation Many to Many
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "price_shows",
             joinColumns = @JoinColumn(name = "price_id"),
