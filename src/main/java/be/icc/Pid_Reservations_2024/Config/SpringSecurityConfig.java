@@ -44,43 +44,21 @@ public class SpringSecurityConfig {
 //        return authManagBuild.build();
 //    }
 
-//    @Bean
-//    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-//        return http.cors(Customizer.withDefaults())
-//                // Disable protect csrf
-//                .csrf(Customizer.withDefaults())
-//                .authorizeHttpRequests(auth -> {
-//                    auth.requestMatchers("/admin").hasRole("ADMIN");
-//                    auth.requestMatchers("/user").hasRole("MEMBER");
-//                    // This is for API
-//                    auth.requestMatchers("/api/public/***").permitAll(); // access for everyone
-//                    auth.requestMatchers("/api/admin/***").hasRole("ADMIN"); // access only for Admin
-//                    auth.anyRequest().permitAll();
-//                })
-//                .httpBasic(Customizer.withDefaults()) // Allow basic authentication (useful for testing)
-//                .formLogin(form -> form
-//                        .loginPage("/login")
-//                        .usernameParameter("login")
-//                        .failureUrl("/login?loginError=true"))
-//                .logout(logout -> logout
-//                        .logoutSuccessUrl("/login?logoutSuccess=true")
-//                        .deleteCookies("JSESSIONID"))
-//                .exceptionHandling(exception -> exception
-//                        .authenticationEntryPoint(
-//                                new LoginUrlAuthenticationEntryPoint("/login?loginRequired=true")))
-//                .build();
-//    }
-
     @Bean
-    public SecurityFilterChain configure(final HttpSecurity http) throws Exception {
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http.cors(Customizer.withDefaults())
-                .csrf(Customizer.withDefaults())
+                // Disable protect csrf
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/admin").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasRole("MEMBER");
                     auth.requestMatchers("/reservation/**").hasAnyRole("ADMIN", "MEMBER");
+                    // This is for API
+                    auth.requestMatchers("/api/**").permitAll(); // access for everyone
+                    auth.requestMatchers("/api/admin/**").hasRole("ADMIN"); // access only for Admin
                     auth.anyRequest().permitAll();
                 })
+                .httpBasic(Customizer.withDefaults()) // Allow basic authentication (useful for testing)
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("login")
@@ -89,8 +67,31 @@ public class SpringSecurityConfig {
                         .logoutSuccessUrl("/login?logoutSuccess=true")
                         .deleteCookies("JSESSIONID"))
                 .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login?loginRequired=true")))
+                        .authenticationEntryPoint(
+                                new LoginUrlAuthenticationEntryPoint("/login?loginRequired=true")))
                 .build();
     }
+
+//    @Bean
+//    public SecurityFilterChain configure(final HttpSecurity http) throws Exception {
+//        return http.cors(Customizer.withDefaults())
+//                .csrf(Customizer.withDefaults())
+//                .authorizeHttpRequests(auth -> {
+//                    auth.requestMatchers("/admin").hasRole("ADMIN");
+//                    auth.requestMatchers("/user/**").hasRole("MEMBER");
+//                    auth.requestMatchers("/reservation/**").hasAnyRole("ADMIN", "MEMBER");
+//                    auth.anyRequest().permitAll();
+//                })
+//                .formLogin(form -> form
+//                        .loginPage("/login")
+//                        .usernameParameter("login")
+//                        .failureUrl("/login?loginError=true"))
+//                .logout(logout -> logout
+//                        .logoutSuccessUrl("/login?logoutSuccess=true")
+//                        .deleteCookies("JSESSIONID"))
+//                .exceptionHandling(exception -> exception
+//                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login?loginRequired=true")))
+//                .build();
+//    }
 
 }
