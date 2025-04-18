@@ -1,5 +1,8 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.slugify.Slugify;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -34,25 +37,28 @@ public class Show {
     @Column(name = "isBookable", columnDefinition = "TINYINT")
     private Boolean isBookable;
 
-    // Methods
     // Relation One to Many
-    @Getter
-    @OneToMany( targetEntity = Representation.class, mappedBy = "show", fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Representation.class, mappedBy = "show", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference("show-representation")
     private List<Representation> representations = new ArrayList<>();
 
-    @OneToMany(mappedBy = "show")
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference("show-review")
     private List<Review> reviews;
 
     // Relation Many To One
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference("location-show")
     private Location location;
 
     // Relation Many To Many
-    @ManyToMany(mappedBy = "shows", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "shows", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JsonIgnore
     List<Price> prices;
 
-    @ManyToMany(mappedBy = "shows", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "shows", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JsonIgnore
     List<ArtisteType> artisteTypes;
 
     // Constructor with params

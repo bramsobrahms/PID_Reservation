@@ -1,5 +1,6 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -30,12 +31,13 @@ public class Review {
     private LocalDateTime update_ad;
 
     // Relation Many To One
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference("show-review")
     private Show show;
 
 }

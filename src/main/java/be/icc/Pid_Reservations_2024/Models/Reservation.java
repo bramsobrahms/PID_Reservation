@@ -25,11 +25,11 @@ public class Reservation {
     private String status;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "reservation", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "reservation", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<RepresentationReservation> representation_reservations;
 
     // Relation Many To One
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 

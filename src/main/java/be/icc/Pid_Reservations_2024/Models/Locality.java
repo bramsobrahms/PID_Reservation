@@ -24,7 +24,7 @@ public class Locality {
     private String locality;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "locality")
+    @OneToMany(mappedBy = "locality", cascade = CascadeType.ALL)
     private List<Location> locations;
 
     // Constructor with params
