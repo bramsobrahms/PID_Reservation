@@ -42,7 +42,7 @@ public class ShowApiController {
                         .withRel("All shows"));  // Add a 'self' link to this resource (refers to itself)
     }
 
-    @GetMapping("/shows/{id}")
+    @GetMapping("/show/{id}")
     public EntityModel<Show> aShow(@PathVariable long id) {
         Show show = showRepository.findById(id).orElse(null);
         return showAssembler.toModel(show);
@@ -61,6 +61,7 @@ public class ShowApiController {
     public ResponseEntity<?> updateShow(@RequestBody Show updatedShow, @PathVariable long id) {
         Show updateTheShow = showRepository.findById(id)
                 .map(show -> { // If the artist exists, update their information
+                    show.setSlug(updatedShow.getSlug());
                     show.setTitle(updatedShow.getTitle());
                     show.setPosterUrl(updatedShow.getPosterUrl());
                     show.setDuration(updatedShow.getDuration());
