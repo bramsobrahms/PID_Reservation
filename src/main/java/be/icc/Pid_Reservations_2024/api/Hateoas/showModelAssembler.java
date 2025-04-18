@@ -12,28 +12,23 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
-public class showModelAssembler implements RepresentationModelAssembler<ShowsDto, EntityModel<ShowsDto>> {
-
-    Show showUpdate = new Show();
-
+public class showModelAssembler implements RepresentationModelAssembler<Show, EntityModel<Show>> {
+    /**
+     * Converts an `Show` object into an `EntityModel<Artist>`, adding HATEOAS links.
+     * HATEOAS => Hypermedia As The Engine Of Application State
+     *
+     * @param show The artist to convert into an EntityModel.
+     * @return An `EntityModel<Artist>` with the artist a links for navigation in the API
+     */
     @Override
-    public EntityModel<ShowsDto> toModel(ShowsDto showDto) {
-        showUpdate.setId(showDto.getId());
-
-        return EntityModel.of(showDto, linkTo(methodOn(ShowApiController.class).showById(showDto.getId())).withSelfRel(),
-                linkTo(methodOn(ShowApiController.class).allShows()).withRel("Shows"),
-                linkTo(methodOn(ShowApiController.class).updateShow(showDto.getId(), showUpdate)).withRel("Update"));
-    }
-
-    public EntityModel<ShowIdDto> toModel(ShowIdDto showIdDto) {
-        showUpdate.setId(showIdDto.getId());
-
-        return EntityModel.of(showIdDto, linkTo(methodOn(ShowApiController.class).showById(showIdDto.getId())).withSelfRel(),
-                linkTo(methodOn(ShowApiController.class).allShows()).withRel("Shows"),
-                linkTo(methodOn(ShowApiController.class).updateShow(showIdDto.getId(), showUpdate)).withRel("Update"));
-    }
-
     public EntityModel<Show> toModel(Show show) {
-        return EntityModel.of(show, linkTo(methodOn(ShowApiController.class).updateShow(show.getId(), showUpdate)).withRel("Update"));
+        return EntityModel.of(show,
+                linkTo(methodOn(ShowApiController.class).allShows()).withRel("All shows"),
+                linkTo(methodOn(ShowApiController.class).aShow(show.getId())).withSelfRel(),
+                linkTo(methodOn(ShowApiController.class).newShow(show)).withRel("Create new Show"),
+                linkTo(methodOn(ShowApiController.class).updateShow(show, show.getId())).withRel("Update show"),
+                linkTo(methodOn(ShowApiController.class).deleteShow(show.getId())).withRel("Delete")
+        );
+
     }
 }
