@@ -1,5 +1,7 @@
 package be.icc.Pid_Reservations_2024.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -23,17 +25,20 @@ public class Representation {
     private LocalDateTime schedule;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "representation")
+    @OneToMany(mappedBy = "representation", fetch = FetchType.EAGER)
+    @JsonBackReference("")
     private List<RepresentationReservation> representation_reservations;
 
     // Relation Many to One
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference("show-representation")
     private Show show;
 
     // Relation Many to Many
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference("location-representation")
     private Location locations;
 
     // Constructor with params

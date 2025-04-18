@@ -31,7 +31,7 @@ public class Artist {
     private String firstname;
 
     // Relation One To Many
-    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ArtisteType> artisteTypes;
 
